@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BLACKSITE — Archivo clasificado: documentos, fotografías y registros.">
+  <title>CLASSIFIED ARCHIVES · BLACKSITE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <div class="loadbar" aria-hidden="true"></div>
+  <div class="watermark" aria-hidden="true">CLASSIFIED</div>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="BLACKSITE — volver al Mainframe">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span>
+        <span class="brand__name">BLACKSITE</span>
+        <span class="brand__sub">FACILITY 07 // ΔK</span>
+      </span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Abrir menú">
+    <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span class="nav-burger__icon"></span>MENU</label>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="index.html"><span class="nav__num">01</span>Mainframe</a></li>
+        <li class="nav__item"><a class="nav__link" href="experiments.html"><span class="nav__num">02</span>Database</a></li>
+        <li class="nav__item"><a class="nav__link" href="dossier.html"><span class="nav__num">03</span>Dossier</a></li>
+        <li class="nav__item"><a class="nav__link" href="control.html"><span class="nav__num">04</span>Control</a></li>
+        <li class="nav__item"><a class="nav__link" href="incidents.html"><span class="nav__num">05</span>Incidents</a></li>
+        <li class="nav__item nav__item--drop">
+          <a class="nav__link" href="archives.html" aria-current="page" aria-haspopup="true"><span class="nav__num">06</span>Archives <span class="nav__caret" aria-hidden="true"></span></a>
+          <div class="dropdown">
+            <a class="dropdown__link" href="archives.html#documents"><span>06.1</span>Documentos<span>12</span></a>
+            <a class="dropdown__link" href="archives.html#photos"><span>06.2</span>Fotografías<span>06</span></a>
+            <a class="dropdown__link" href="archives.html#logs"><span>06.3</span>Registros de audio<span>03</span></a>
+            <a class="dropdown__link" href="archives.html#locked"><span>06.4</span>Expedientes bloqueados<span>04</span></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="access" role="status">
+      <span class="led led--red led--blink" aria-hidden="true"></span>
+      <span class="access__text">Restricted access</span>
+      <span class="access__lvl">CLR-4</span>
+    </div>
+  </header>
+
+  <!-- Metabarra: fecha, código de instalación, coordenadas -->
+  <div class="metabar" aria-label="Datos de sesión">
+    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val">13.11.2047 — 03:17:42 UTC</span></div>
+    <div class="metabar__item"><span class="metabar__key">Facility</span><span class="metabar__val">BS7-ΔK-0419</span></div>
+    <div class="metabar__item"><span class="metabar__key">Coords</span><span class="metabar__val">N 71°02'17" · E 024°51'09"</span></div>
+    <div class="metabar__item"><span class="metabar__key">Operator</span><span class="metabar__val">DR. M. VOSS · 7741-K</span></div>
+    <div class="metabar__item"><span class="led led--on led--pulse" aria-hidden="true"></span><span class="metabar__val">Session encrypted</span></div>
+  </div>
+
+  <!-- Raíl lateral -->
+  <aside class="rail" aria-hidden="true">
+    <span class="rail__num">06<small>/06</small></span>
+    <span class="rail__text">Classified archives // ARC-07</span>
+    <span class="rail__ticks"></span>
+  </aside>
+
+  <main id="main" class="page">
+
+    <!-- ===================== CABECERA ===================== -->
+    <section class="page-head container">
+      <ol class="crumbs">
+        <li><a href="index.html">Mainframe</a></li>
+        <li>Classified archives</li>
+        <li>ARC-07</li>
+      </ol>
+      <div class="page-head__grid">
+        <h1 class="page-title">Classified<br><span class="glitch" data-text="archives">archives</span></h1>
+        <p class="page-lead">
+          Fondo documental de la Instalación 07: informes mecanografiados, fotografías de
+          evidencias, transcripciones de audio y expedientes bloqueados. Parte del material
+          requiere descifrado. Parte no debería estar aquí.
+        </p>
+      </div>
+      <div class="page-meta">
+        <div><span class="label">Archivos indexados</span><strong>25</strong></div>
+        <div><span class="label">Bloqueados</span><strong class="text-red">04</strong></div>
+        <div><span class="label">Integridad del archivo</span><strong>93,1%</strong></div>
+      </div>
+    </section>
+
+    <section class="container arch-layout">
+
+      <!-- Índice lateral: enlaces a secciones (:target las resalta) -->
+      <nav class="arch-nav" aria-label="Secciones del archivo">
+        <a href="#documents">Documentos <span>06.1</span></a>
+        <a href="#photos">Fotografías <span>06.2</span></a>
+        <a href="#logs">Registros <span>06.3</span></a>
+        <a href="#locked">Bloqueados <span>06.4</span></a>
+      </nav>
+
+      <div>
+
+        <!-- ========== 06.1 DOCUMENTOS ========== -->
+        <section class="arch-section" id="documents" aria-labelledby="docs-t">
+          <header class="section-head">
+            <span class="section-head__num">06.1 /</span>
+            <h2 id="docs-t" class="section-head__title">Documentos</h2>
+            <span class="section-head__meta">3 carpetas · 12 docs</span>
+          </header>
+
+          <details class="expand folder" open>
+            <summary class="expand__summary">
+              <span class="folder__icon" aria-hidden="true"></span>
+              <span class="folder__name">Fundación de la Instalación 07<small>ARC-07/F-01 · 1998–2041</small></span>
+              <span class="tag">Desclasificado</span>
+              <span class="expand__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="expand__body docs-list">
+              <article class="paper">
+                <p class="paper__head"><span>Memorándum interno · Nº 0007</span><span>14.03.1998</span></p>
+                <span class="stamp">Secret</span>
+                <p>A: Comité de Proyectos Especiales.<br>Asunto: Emplazamiento definitivo.</p>
+                <p>Tras evaluar once ubicaciones, recomendamos la cuenca del glaciar ΔK. Su aislamiento, la profundidad del permafrost y la ausencia de población en 400 km la hacen idónea. Adicionalmente, las mediciones sísmicas detectan <span class="redacted" tabindex="0">un latido regular a 4 km de profundidad</span>, lo que justifica por sí solo el emplazamiento.</p>
+                <p>— Dir. A. Halvorsen</p>
+              </article>
+              <article class="paper">
+                <p class="paper__head"><span>Normativa de personal · Rev. 3</span><span>02.01.2041</span></p>
+                <p>Art. 12: Ningún miembro del personal podrá trabajar más de 400 días seguidos en el nivel −4. Art. 13: Queda prohibido contar en voz alta las puertas del corredor C-0. Art. 14: Si cuenta una puerta más de las que hay, notifíquelo de inmediato.</p>
+              </article>
+            </div>
+          </details>
+
+          <details class="expand folder">
+            <summary class="expand__summary">
+              <span class="folder__icon" aria-hidden="true"></span>
+              <span class="folder__name">Correspondencia con el Consejo<small>ARC-07/F-02 · 2044–2047</small></span>
+              <span class="tag tag--red">CLR-4</span>
+              <span class="expand__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="expand__body docs-list">
+              <article class="paper">
+                <p class="paper__head"><span>Mensaje cifrado · Canal AURORA</span><span>18.03.2046</span></p>
+                <p>Dirección solicita la eliminación de EXP-001 tras INC-2046-0031. Respuesta del Consejo: <span class="redacted" tabindex="0">"Denegado. El espécimen es más valioso que el personal. Continúen."</span></p>
+              </article>
+              <article class="paper">
+                <p class="paper__head"><span>Nota manuscrita escaneada</span><span>Sin fecha</span></p>
+                <p>"Si alguien lee esto: el sol del nivel −7 no es una luz. Es un ojo. Y se abre a las 03:00 porque es cuando nosotros dormimos."</p>
+                <p class="muted mono-small">Autor desconocido. Encontrada en la taquilla 117.</p>
+              </article>
+            </div>
+          </details>
+
+          <details class="expand folder">
+            <summary class="expand__summary">
+              <span class="folder__icon" aria-hidden="true"></span>
+              <span class="folder__name">Manual de evacuación<small>ARC-07/F-03 · Vigente</small></span>
+              <span class="tag">Público interno</span>
+              <span class="expand__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="expand__body docs-list">
+              <article class="paper">
+                <p class="paper__head"><span>Procedimiento E-1</span><span>Rev. 9</span></p>
+                <p>1. Diríjase al ascensor más cercano que no sea el de carga. 2. Si el ascensor ya le espera con las puertas abiertas, no entre. 3. Use la escalera de emergencia (1.840 escalones). 4. Al llegar a la superficie, espere a que le identifiquen. 5. No identifique a nadie que salga después que usted.</p>
+              </article>
+            </div>
+          </details>
+        </section>
+
+        <!-- ========== 06.2 FOTOGRAFÍAS ========== -->
+        <section class="arch-section" id="photos" aria-labelledby="photos-t">
+          <header class="section-head">
+            <span class="section-head__num">06.2 /</span>
+            <h2 id="photos-t" class="section-head__title">Fotografías de evidencia</h2>
+            <span class="section-head__meta">Pulse para ampliar</span>
+          </header>
+          <div class="photos">
+            <a class="photo" href="#ph-1"><div class="visual visual--photo-1" role="img" aria-label="Corredor C-0 vacío"></div><span class="photo__zoom">Ampliar</span><span class="photo__caption"><span>EV-0112</span><span>Corredor C-0</span></span></a>
+            <a class="photo" href="#ph-2"><div class="visual visual--photo-2" role="img" aria-label="Espécimen en tanque de contención"></div><span class="photo__zoom">Ampliar</span><span class="photo__caption"><span>EV-0204</span><span>Muestra L-2</span></span></a>
+            <a class="photo photo--damaged" href="#ph-3"><div class="visual visual--photo-3" role="img" aria-label="Fotograma de cámara de seguridad con una figura"></div><span class="photo__zoom">Ampliar</span><span class="photo__caption"><span class="text-red">EV-0311</span><span>CAM-22</span></span></a>
+            <a class="photo" href="#ph-4"><div class="visual visual--photo-4" role="img" aria-label="Luz roja en el techo de una caverna"></div><span class="photo__zoom">Ampliar</span><span class="photo__caption"><span>EV-0403</span><span>Nivel −7</span></span></a>
+            <a class="photo" href="#ph-5"><div class="visual visual--photo-5" role="img" aria-label="Laboratorio abandonado"></div><span class="photo__zoom">Ampliar</span><span class="photo__caption"><span>EV-0099</span><span>Lab. L-1</span></span></a>
+            <a class="photo photo--damaged" href="#ph-6"><div class="visual visual--photo-6" role="img" aria-label="Cráter en el hielo visto desde arriba"></div><span class="photo__zoom">Ampliar</span><span class="photo__caption"><span>EV-0001</span><span>Pozo P-3</span></span></a>
+          </div>
+        </section>
+
+        <!-- ========== 06.3 REGISTROS DE AUDIO ========== -->
+        <section class="arch-section" id="logs" aria-labelledby="logs-t">
+          <header class="section-head">
+            <span class="section-head__num">06.3 /</span>
+            <h2 id="logs-t" class="section-head__title">Registros de audio</h2>
+            <span class="section-head__meta">Transcripciones automáticas</span>
+          </header>
+
+          <details class="expand">
+            <summary class="expand__summary">
+              <span class="audio__play" aria-hidden="true"></span>
+              <span class="doc-row__name">AUD-0311 · Entrevista #311 con EXP-003<small>04:12 · A-01 · 01.11.2047</small></span>
+              <span class="expand__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="expand__body">
+              <div class="wave" aria-hidden="true">
+                <span style="--h:30%;--d:0s"></span><span style="--h:60%;--d:.1s"></span><span style="--h:45%;--d:.2s"></span><span style="--h:80%;--d:.05s"></span><span style="--h:35%;--d:.3s"></span><span style="--h:90%;--d:.15s"></span><span style="--h:55%;--d:.25s"></span><span style="--h:20%;--d:.35s"></span><span style="--h:70%;--d:.1s"></span><span style="--h:40%;--d:.2s"></span><span style="--h:85%;--d:.3s"></span><span style="--h:50%;--d:0s"></span><span style="--h:25%;--d:.15s"></span><span style="--h:65%;--d:.25s"></span><span style="--h:95%;--d:.05s"></span><span style="--h:45%;--d:.35s"></span><span style="--h:30%;--d:.1s"></span><span style="--h:75%;--d:.2s"></span><span style="--h:55%;--d:.3s"></span><span style="--h:35%;--d:0s"></span><span style="--h:60%;--d:.15s"></span><span style="--h:20%;--d:.25s"></span><span style="--h:85%;--d:.05s"></span><span style="--h:40%;--d:.35s"></span><span style="--h:70%;--d:.1s"></span><span style="--h:50%;--d:.2s"></span><span style="--h:30%;--d:.3s"></span><span style="--h:65%;--d:0s"></span><span style="--h:45%;--d:.15s"></span><span style="--h:25%;--d:.25s"></span>
+              </div>
+              <div class="transcript">
+                <p><b>DR. LUND:</b> Sesión 311. ¿Cómo se encuentra hoy?</p>
+                <p><b>EXP-003:</b> Mejor que usted el jueves.</p>
+                <p><b>DR. LUND:</b> ¿Qué ocurre el jueves?</p>
+                <p><b>EXP-003:</b> Nada grave. Pero no coja el ascensor de carga.</p>
+                <p><b>DR. LUND:</b> [pausa de 14 s] Fin de la sesión.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="expand">
+            <summary class="expand__summary">
+              <span class="audio__play" aria-hidden="true"></span>
+              <span class="doc-row__name">AUD-0207 · Micrófono interno B-12<small>00:41 · B-12 · 03.09.2044</small></span>
+              <span class="expand__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="expand__body">
+              <div class="wave" aria-hidden="true">
+                <span style="--h:10%;--d:0s"></span><span style="--h:12%;--d:.1s"></span><span style="--h:8%;--d:.2s"></span><span style="--h:15%;--d:.3s"></span><span style="--h:70%;--d:.05s"></span><span style="--h:85%;--d:.15s"></span><span style="--h:90%;--d:.25s"></span><span style="--h:60%;--d:.35s"></span><span style="--h:12%;--d:.1s"></span><span style="--h:10%;--d:.2s"></span><span style="--h:8%;--d:0s"></span><span style="--h:75%;--d:.3s"></span><span style="--h:95%;--d:.15s"></span><span style="--h:80%;--d:.05s"></span><span style="--h:15%;--d:.25s"></span><span style="--h:10%;--d:.35s"></span><span style="--h:9%;--d:.1s"></span><span style="--h:12%;--d:.2s"></span><span style="--h:10%;--d:0s"></span><span style="--h:8%;--d:.3s"></span>
+              </div>
+              <div class="transcript">
+                <p><b>[RUIDO AMBIENTE]</b></p>
+                <p><b>VOZ (IDENTIFICADA: J. ARENAS):</b> Abre la puerta. Hace frío aquí dentro.</p>
+                <p><b>[NOTA DEL ANALISTA]:</b> J. Arenas se encontraba en la cafetería, nivel −2, en el momento de la grabación. Testigos: 9.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="expand">
+            <summary class="expand__summary">
+              <span class="audio__play" aria-hidden="true"></span>
+              <span class="doc-row__name">AUD-0002 · Señal del dron RX-4<small>∞ · S-09 · En curso</small></span>
+              <span class="expand__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="expand__body">
+              <div class="wave" aria-hidden="true">
+                <span style="--h:50%;--d:0s"></span><span style="--h:50%;--d:.1s"></span><span style="--h:50%;--d:.2s"></span><span style="--h:50%;--d:.3s"></span><span style="--h:50%;--d:.4s"></span><span style="--h:50%;--d:.5s"></span><span style="--h:50%;--d:.6s"></span><span style="--h:50%;--d:.7s"></span><span style="--h:50%;--d:.8s"></span><span style="--h:50%;--d:.9s"></span><span style="--h:50%;--d:1s"></span><span style="--h:50%;--d:1.1s"></span>
+              </div>
+              <div class="transcript">
+                <p><b>[TONO CONSTANTE · 440 Hz · 709 DÍAS]</b></p>
+                <p>Análisis: el tono contiene una modulación lenta que, acelerada ×10.000, se corresponde con <span class="redacted" tabindex="0">voces humanas contando hacia atrás desde 1.000.000</span>. Cuenta actual: 3.112.</p>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <!-- ========== 06.4 EXPEDIENTES BLOQUEADOS ========== -->
+        <section class="arch-section" id="locked" aria-labelledby="locked-t">
+          <header class="section-head">
+            <span class="section-head__num">06.4 /</span>
+            <h2 id="locked-t" class="section-head__title">Expedientes bloqueados</h2>
+            <span class="section-head__meta">Descifrado local · CLR-4</span>
+          </header>
+
+          <div class="locked-grid">
+            <!-- Checkbox "DESCIFRAR": al marcarlo se quita el desenfoque -->
+            <article class="locked">
+              <input type="checkbox" id="dec-1" class="locked__toggle visually-hidden">
+              <div class="locked__content">
+                <h4>LCK-01 · Lista de turnos de B-12</h4>
+                <p>Observadores asignados a la celda B-12 durante noviembre de 2047. Nota al pie: "El turno de 03:00 a 07:00 queda vacante de forma permanente. Nadie acepta repetirlo."</p>
+              </div>
+              <div class="locked__veil">
+                <span class="locked__lock" aria-hidden="true"></span>
+                <span class="label">Encrypted · AES-1024</span>
+                <span class="locked__progress" aria-hidden="true"></span>
+                <label for="dec-1" class="btn btn--sm">Descifrar</label>
+              </div>
+            </article>
+
+            <article class="locked">
+              <input type="checkbox" id="dec-2" class="locked__toggle visually-hidden">
+              <div class="locked__content">
+                <h4>LCK-02 · Inventario del nivel −7</h4>
+                <p>1 plataforma de observación, 14 sillas, 14 pares de gafas de protección. Sillas ocupadas cada mañana al llegar el turno: 14. Personal asignado al nivel −7: 6.</p>
+              </div>
+              <div class="locked__veil">
+                <span class="locked__lock" aria-hidden="true"></span>
+                <span class="label">Encrypted · AES-1024</span>
+                <span class="locked__progress" aria-hidden="true"></span>
+                <label for="dec-2" class="btn btn--sm">Descifrar</label>
+              </div>
+            </article>
+
+            <article class="locked locked--sealed">
+              <div class="locked__content">
+                <h4>LCK-03 · Proyecto ██████</h4>
+                <p>Contenido no disponible. Contenido no disponible. Contenido no disponible.</p>
+              </div>
+              <div class="locked__veil">
+                <span class="locked__lock" aria-hidden="true"></span>
+                <span class="label text-red">Sellado · Nivel 5</span>
+                <span class="btn btn--sm btn--locked" aria-disabled="true">Acceso denegado</span>
+              </div>
+            </article>
+
+            <article class="locked locked--sealed">
+              <div class="locked__content">
+                <h4>LCK-04 · EXP-005</h4>
+                <p>Este experimento no existe. Este experimento no existe.</p>
+              </div>
+              <div class="locked__veil">
+                <span class="locked__lock" aria-hidden="true"></span>
+                <span class="label text-red">Sellado · Nivel 5</span>
+                <span class="label">Registro creado: 14.11.2047 <a class="secret-link" href="#file-omega" aria-label="Archivo oculto"></a></span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+    <!-- ===================== VISOR DE FOTOS (:target) ===================== -->
+    <div class="modal modal--wide" id="ph-1" role="dialog" aria-modal="true" aria-labelledby="ph-1-t">
+      <div class="modal__box">
+        <header class="modal__head"><span>Evidencia EV-0112</span><a class="modal__close" href="#photos" aria-label="Cerrar">✕</a></header>
+        <div class="lightbox__grid">
+          <div class="lightbox__media scan"><div class="visual visual--photo-1" role="img" aria-label="Corredor C-0 vacío"></div><div class="hud-frame" aria-hidden="true"></div></div>
+          <div class="lightbox__info">
+            <h2 id="ph-1-t" class="modal__title">Corredor C-0</h2>
+            <dl class="spec">
+              <div class="spec__row"><dt>Fecha</dt><dd>13.11.2047 · 03:15</dd></div>
+              <div class="spec__row"><dt>Cámara</dt><dd>CAM-07</dd></div>
+              <div class="spec__row"><dt>Relacionado</dt><dd>INC-2047-0118</dd></div>
+            </dl>
+            <p class="muted" style="margin-top:1rem">El corredor mide 48,2 m en esta imagen. En los planos mide 31 m. Cuente las puertas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal--wide" id="ph-2" role="dialog" aria-modal="true" aria-labelledby="ph-2-t">
+      <div class="modal__box">
+        <header class="modal__head"><span>Evidencia EV-0204</span><a class="modal__close" href="#photos" aria-label="Cerrar">✕</a></header>
+        <div class="lightbox__grid">
+          <div class="lightbox__media scan"><div class="visual visual--photo-2" role="img" aria-label="Espécimen en tanque"></div><div class="hud-frame" aria-hidden="true"></div></div>
+          <div class="lightbox__info">
+            <h2 id="ph-2-t" class="modal__title">Muestra L-2</h2>
+            <dl class="spec">
+              <div class="spec__row"><dt>Fecha</dt><dd>11.02.2044</dd></div>
+              <div class="spec__row"><dt>Laboratorio</dt><dd>L-2 · S-01</dd></div>
+              <div class="spec__row"><dt>Relacionado</dt><dd>EXP-001</dd></div>
+            </dl>
+            <p class="muted" style="margin-top:1rem">Primera fotografía de EXP-001 tras su crecimiento nocturno. 2,1 kg. En las siguientes 400 fotos, la muestra está orientada hacia la cámara.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal--wide" id="ph-3" role="dialog" aria-modal="true" aria-labelledby="ph-3-t">
+      <div class="modal__box">
+        <header class="modal__head"><span class="text-red">Evidencia EV-0311 · Dañada</span><a class="modal__close" href="#photos" aria-label="Cerrar">✕</a></header>
+        <div class="lightbox__grid">
+          <div class="lightbox__media scan photo--damaged"><div class="visual visual--photo-3" role="img" aria-label="Figura en cámara de seguridad"></div><div class="hud-frame" aria-hidden="true"></div></div>
+          <div class="lightbox__info">
+            <h2 id="ph-3-t" class="modal__title">CAM-22</h2>
+            <dl class="spec">
+              <div class="spec__row"><dt>Fecha</dt><dd>13.11.2047 · 03:15:44</dd></div>
+              <div class="spec__row"><dt>Sujeto</dt><dd>EXP-003</dd></div>
+              <div class="spec__row"><dt>Anomalía</dt><dd class="text-red">−3,2 s</dd></div>
+            </dl>
+            <p class="muted" style="margin-top:1rem">Fotograma tomado 3,2 segundos antes de que el sujeto entrara en el plano. La imagen se degrada cada vez que se abre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal--wide" id="ph-4" role="dialog" aria-modal="true" aria-labelledby="ph-4-t">
+      <div class="modal__box">
+        <header class="modal__head"><span>Evidencia EV-0403</span><a class="modal__close" href="#photos" aria-label="Cerrar">✕</a></header>
+        <div class="lightbox__grid">
+          <div class="lightbox__media scan"><div class="visual visual--photo-4" role="img" aria-label="Luz roja en una caverna"></div><div class="hud-frame" aria-hidden="true"></div></div>
+          <div class="lightbox__info">
+            <h2 id="ph-4-t" class="modal__title">Nivel −7</h2>
+            <dl class="spec">
+              <div class="spec__row"><dt>Fecha</dt><dd>27.06.2046 · 03:00</dd></div>
+              <div class="spec__row"><dt>Exposición</dt><dd>1/4000 s</dd></div>
+              <div class="spec__row"><dt>Relacionado</dt><dd>EXP-004</dd></div>
+            </dl>
+            <p class="muted" style="margin-top:1rem">Primer registro de EXP-004. El fotógrafo no recuerda haber tomado la imagen. La cámara tenía 212 fotos más, todas idénticas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal--wide" id="ph-5" role="dialog" aria-modal="true" aria-labelledby="ph-5-t">
+      <div class="modal__box">
+        <header class="modal__head"><span>Evidencia EV-0099</span><a class="modal__close" href="#photos" aria-label="Cerrar">✕</a></header>
+        <div class="lightbox__grid">
+          <div class="lightbox__media scan"><div class="visual visual--photo-5" role="img" aria-label="Laboratorio abandonado"></div><div class="hud-frame" aria-hidden="true"></div></div>
+          <div class="lightbox__info">
+            <h2 id="ph-5-t" class="modal__title">Laboratorio L-1</h2>
+            <dl class="spec">
+              <div class="spec__row"><dt>Fecha</dt><dd>30.10.2043</dd></div>
+              <div class="spec__row"><dt>Estado</dt><dd>Clausurado</dd></div>
+            </dl>
+            <p class="muted" style="margin-top:1rem">Laboratorio original, clausurado antes del hallazgo de EXP-001. Motivo de la clausura: <span class="redacted" tabindex="0">no consta</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal--wide" id="ph-6" role="dialog" aria-modal="true" aria-labelledby="ph-6-t">
+      <div class="modal__box">
+        <header class="modal__head"><span>Evidencia EV-0001</span><a class="modal__close" href="#photos" aria-label="Cerrar">✕</a></header>
+        <div class="lightbox__grid">
+          <div class="lightbox__media scan photo--damaged"><div class="visual visual--photo-6" role="img" aria-label="Cráter en el hielo"></div><div class="hud-frame" aria-hidden="true"></div></div>
+          <div class="lightbox__info">
+            <h2 id="ph-6-t" class="modal__title">Pozo P-3</h2>
+            <dl class="spec">
+              <div class="spec__row"><dt>Fecha</dt><dd>04.02.2044</dd></div>
+              <div class="spec__row"><dt>Coordenadas</dt><dd>N 71°01'58" · E 024°50'41"</dd></div>
+            </dl>
+            <p class="muted" style="margin-top:1rem">Imagen aérea del pozo de perforación. El cráter no existía el día anterior.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Archivo oculto: se llega desde el punto rojo casi invisible -->
+    <div class="modal" id="file-omega" role="dialog" aria-modal="true" aria-labelledby="omega-file-t">
+      <div class="modal__box alarm-flash">
+        <div class="hazard" aria-hidden="true"></div>
+        <header class="modal__head"><span>Archivo Ω · origen desconocido</span><a class="modal__close" href="#locked" aria-label="Cerrar">✕</a></header>
+        <div class="modal__body">
+          <h2 id="omega-file-t" class="modal__title"><span class="glitch text-red" data-text="No debería ver esto">No debería ver esto</span></h2>
+          <p>Este archivo fue creado mañana, 14.11.2047, desde su terminal, con su credencial 7741-K.</p>
+          <p>Contenido íntegro: <strong>"No bajes al nivel −7 a las 03:00."</strong></p>
+          <div class="modal__actions"><a class="btn btn--ghost" href="#locked">Cerrar y olvidar</a></div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- ===================== BARRA DE ESTADO ===================== -->
+  <footer class="statusbar">
+    <div class="hazard" aria-hidden="true"></div>
+    <div class="container">
+      <div class="statusbar__grid">
+        <div>
+          <p class="statusbar__brand">BLACKSITE</p>
+          <p>Sistema de uso exclusivo para personal autorizado de la Instalación 07. El acceso no autorizado constituye una violación de la Directiva de Seguridad Nacional 7-ΔK.</p>
+        </div>
+        <div>
+          <h4>Módulos</h4>
+          <ul>
+            <li><a href="index.html">01 Mainframe</a></li>
+            <li><a href="experiments.html">02 Database</a></li>
+            <li><a href="dossier.html">03 Dossier</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Operaciones</h4>
+          <ul>
+            <li><a href="control.html">04 Control</a></li>
+            <li><a href="incidents.html">05 Incidents</a></li>
+            <li><a href="archives.html">06 Archives</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Nodo</h4>
+          <ul>
+            <li>BS7-ΔK-0419</li>
+            <li>N 71°02'17" · E 024°51'09"</li>
+            <li>Uplink AURORA-2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="statusbar__bottom">
+        <span><span class="led led--on led--pulse" aria-hidden="true"></span>BS-OS v4.7.2 · Build 2047.11.03</span>
+        <span>Toda actividad es registrada</span>
+        <span>Contenido ficticio · Proyecto de clase</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

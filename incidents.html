@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BLACKSITE — Base de datos de incidentes y sucesos anómalos.">
+  <title>INCIDENT REPORTS · BLACKSITE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <div class="loadbar" aria-hidden="true"></div>
+  <div class="watermark" aria-hidden="true">CLASSIFIED</div>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="BLACKSITE — volver al Mainframe">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span>
+        <span class="brand__name">BLACKSITE</span>
+        <span class="brand__sub">FACILITY 07 // ΔK</span>
+      </span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Abrir menú">
+    <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span class="nav-burger__icon"></span>MENU</label>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="index.html"><span class="nav__num">01</span>Mainframe</a></li>
+        <li class="nav__item"><a class="nav__link" href="experiments.html"><span class="nav__num">02</span>Database</a></li>
+        <li class="nav__item"><a class="nav__link" href="dossier.html"><span class="nav__num">03</span>Dossier</a></li>
+        <li class="nav__item"><a class="nav__link" href="control.html"><span class="nav__num">04</span>Control</a></li>
+        <li class="nav__item"><a class="nav__link" href="incidents.html" aria-current="page"><span class="nav__num">05</span>Incidents</a></li>
+        <li class="nav__item nav__item--drop">
+          <a class="nav__link" href="archives.html" aria-haspopup="true"><span class="nav__num">06</span>Archives <span class="nav__caret" aria-hidden="true"></span></a>
+          <div class="dropdown">
+            <a class="dropdown__link" href="archives.html#documents"><span>06.1</span>Documentos<span>12</span></a>
+            <a class="dropdown__link" href="archives.html#photos"><span>06.2</span>Fotografías<span>06</span></a>
+            <a class="dropdown__link" href="archives.html#logs"><span>06.3</span>Registros de audio<span>03</span></a>
+            <a class="dropdown__link" href="archives.html#locked"><span>06.4</span>Expedientes bloqueados<span>04</span></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="access" role="status">
+      <span class="led led--red led--blink" aria-hidden="true"></span>
+      <span class="access__text">Restricted access</span>
+      <span class="access__lvl">CLR-4</span>
+    </div>
+  </header>
+
+  <!-- Metabarra: fecha, código de instalación, coordenadas -->
+  <div class="metabar" aria-label="Datos de sesión">
+    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val">13.11.2047 — 03:17:42 UTC</span></div>
+    <div class="metabar__item"><span class="metabar__key">Facility</span><span class="metabar__val">BS7-ΔK-0419</span></div>
+    <div class="metabar__item"><span class="metabar__key">Coords</span><span class="metabar__val">N 71°02'17" · E 024°51'09"</span></div>
+    <div class="metabar__item"><span class="metabar__key">Operator</span><span class="metabar__val">DR. M. VOSS · 7741-K</span></div>
+    <div class="metabar__item"><span class="led led--on led--pulse" aria-hidden="true"></span><span class="metabar__val">Session encrypted</span></div>
+  </div>
+
+  <!-- Raíl lateral -->
+  <aside class="rail" aria-hidden="true">
+    <span class="rail__num">05<small>/06</small></span>
+    <span class="rail__text">Incident reports // 2044–2047</span>
+    <span class="rail__ticks"></span>
+  </aside>
+
+  <main id="main" class="page">
+
+    <!-- ===================== CABECERA ===================== -->
+    <section class="page-head container">
+      <ol class="crumbs">
+        <li><a href="index.html">Mainframe</a></li>
+        <li>Incident reports</li>
+        <li>INC-DB</li>
+      </ol>
+      <div class="page-head__grid">
+        <h1 class="page-title">Incident<br><span>reports</span></h1>
+        <p class="page-lead">
+          Registro oficial de accidentes, brechas y sucesos sin explicación ocurridos en la
+          Instalación 07. Los informes marcados como <strong class="text-red">REDACTED</strong>
+          han sido intervenidos por el Consejo de Supervisión.
+        </p>
+      </div>
+    </section>
+
+    <section class="container reports-wrap" aria-label="Base de datos de incidentes">
+
+      <div class="summary-strip">
+        <article class="stat"><span class="label">Informes 2044–2047</span><span class="stat__value">117</span><span class="stat__note">8 mostrados</span></article>
+        <article class="stat stat--alert"><span class="label">Abiertos</span><span class="stat__value">03</span><span class="stat__note"><span class="led led--red led--blink" aria-hidden="true"></span>1 en curso</span></article>
+        <article class="stat"><span class="label">Bajas registradas</span><span class="stat__value">09</span><span class="stat__note">+ 4 desaparecidos</span></article>
+        <article class="stat"><span class="label">Días sin incidentes</span><span class="stat__value">00</span><span class="stat__note">Récord: 11 días</span></article>
+      </div>
+
+      <!-- Filtro por gravedad: radios + :has() en .reports-wrap -->
+      <div class="filters" role="radiogroup" aria-label="Filtrar por gravedad">
+        <span class="label">Gravedad:</span>
+        <input class="filters__input visually-hidden" type="radio" name="sev" id="sev-all" checked>
+        <label class="filters__label" for="sev-all">Todas</label>
+        <input class="filters__input visually-hidden" type="radio" name="sev" id="sev-critical">
+        <label class="filters__label" for="sev-critical">Crítica</label>
+        <input class="filters__input visually-hidden" type="radio" name="sev" id="sev-severe">
+        <label class="filters__label" for="sev-severe">Grave</label>
+        <input class="filters__input visually-hidden" type="radio" name="sev" id="sev-moderate">
+        <label class="filters__label" for="sev-moderate">Moderada</label>
+        <input class="filters__input visually-hidden" type="radio" name="sev" id="sev-minor">
+        <label class="filters__label" for="sev-minor">Leve</label>
+        <span class="label filters__count">Orden: más reciente</span>
+      </div>
+
+      <div class="reports-head label" aria-hidden="true">
+        <span>Nº incidente</span><span>Fecha</span><span>Suceso · ubicación</span><span>Gravedad</span><span>Estado</span><span></span>
+      </div>
+
+      <!-- ========== INFORME 1 ========== -->
+      <details class="report" data-sev="critical" open>
+        <summary class="report__row">
+          <span class="report__num">INC-2047-0118</span>
+          <time class="report__date">13.11.2047</time>
+          <span class="report__title">Fluctuación gravitacional<small>Sector 09 · Nivel −4</small></span>
+          <span class="report__sevcol"><span class="sev sev--critical">Crítica</span></span>
+          <span class="report__status"><span class="tag tag--solid">Abierto</span></span>
+          <span class="expand__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="report__body">
+          <div>
+            <h4>Descripción</h4>
+            <p>A las 03:14:09 los sensores de S-09 registran un aumento de 0,4 g alrededor de EXP-002. Los relojes del pasillo comienzan a desincronizarse entre sí. El técnico de guardia informa de que "el pasillo es más largo que antes".</p>
+            <h4>Acciones tomadas</h4>
+            <p>Protocolo VACÍO-3 activado. Evacuación del sector S-10. Medición láser del corredor: 48,2 m. Longitud según planos: 31,0 m.</p>
+          </div>
+          <aside class="report__aside">
+            <dl class="spec">
+              <div class="spec__row"><dt>Ubicación</dt><dd>S-09 · N 71°02'11"</dd></div>
+              <div class="spec__row"><dt>Experimento</dt><dd>EXP-002</dd></div>
+              <div class="spec__row"><dt>Heridos</dt><dd>0</dd></div>
+            </dl>
+            <div class="meter" style="margin-top:1rem">
+              <div class="meter__row"><span>Investigación</span><strong>En curso</strong></div>
+              <div class="bar bar--striped"><span class="bar__fill" style="--value:24%"></span></div>
+            </div>
+            <p class="signature">Redactado por: Of. K. Brandt · Seguridad interna</p>
+          </aside>
+        </div>
+      </details>
+
+      <!-- ========== INFORME 2 ========== -->
+      <details class="report" data-sev="severe">
+        <summary class="report__row">
+          <span class="report__num">INC-2047-0117</span>
+          <time class="report__date">13.11.2047</time>
+          <span class="report__title">Alarma activada por el espécimen<small>Celda B-12 · Nivel −4</small></span>
+          <span class="report__sevcol"><span class="sev sev--severe">Grave</span></span>
+          <span class="report__status"><span class="tag tag--red">En revisión</span></span>
+          <span class="expand__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="report__body">
+          <div>
+            <h4>Descripción</h4>
+            <p>La alarma de la celda B-12 suena durante 41 segundos. El sistema no registra ninguna activación. El análisis espectral demuestra que el sonido fue producido por EXP-001 imitando la sirena con una precisión del 99,7%.</p>
+            <h4>Valoración</h4>
+            <p>Se sospecha que el espécimen intenta provocar la apertura de emergencia de la puerta 2. Se desactiva la apertura automática por alarma.</p>
+          </div>
+          <aside class="report__aside">
+            <dl class="spec">
+              <div class="spec__row"><dt>Ubicación</dt><dd>B-12 · Puerta 2</dd></div>
+              <div class="spec__row"><dt>Experimento</dt><dd>EXP-001</dd></div>
+              <div class="spec__row"><dt>Heridos</dt><dd>0</dd></div>
+            </dl>
+            <p class="signature">Redactado por: Dra. I. Varga · Investigación</p>
+          </aside>
+        </div>
+      </details>
+
+      <!-- ========== INFORME 3 ========== -->
+      <details class="report" data-sev="moderate">
+        <summary class="report__row">
+          <span class="report__num">INC-2047-0112</span>
+          <time class="report__date">02.11.2047</time>
+          <span class="report__title">Pérdida colectiva de tiempo<small>Caverna N −7 · Plataforma 3</small></span>
+          <span class="report__sevcol"><span class="sev sev--moderate">Moderada</span></span>
+          <span class="report__status"><span class="tag">Cerrado</span></span>
+          <span class="expand__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="report__body">
+          <div>
+            <h4>Descripción</h4>
+            <p>Seis operarios de mantenimiento son encontrados sentados frente a EXP-004 a las 03:11. Ninguno recuerda los últimos 11 minutos. Todos llevan las gafas de protección en la mano, no puestas. Cinco de ellos sonríen.</p>
+            <h4>Resolución</h4>
+            <p>Tratamiento médico estándar y descanso de 48 h. Se instala un temporizador de exposición obligatorio de 40 s en la plataforma 3.</p>
+          </div>
+          <aside class="report__aside">
+            <dl class="spec">
+              <div class="spec__row"><dt>Ubicación</dt><dd>N −7 · Plataforma 3</dd></div>
+              <div class="spec__row"><dt>Experimento</dt><dd>EXP-004</dd></div>
+              <div class="spec__row"><dt>Afectados</dt><dd>6</dd></div>
+            </dl>
+            <p class="signature">Redactado por: Dr. P. Salo · Servicios médicos</p>
+          </aside>
+        </div>
+      </details>
+
+      <!-- ========== INFORME 4 ========== -->
+      <details class="report" data-sev="minor">
+        <summary class="report__row">
+          <span class="report__num">INC-2047-0098</span>
+          <time class="report__date">21.10.2047</time>
+          <span class="report__title">Respuesta anticipada en entrevista<small>Celda A-01 · Nivel −4</small></span>
+          <span class="report__sevcol"><span class="sev sev--minor">Leve</span></span>
+          <span class="report__status"><span class="tag">Cerrado</span></span>
+          <span class="expand__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="report__body">
+          <div>
+            <h4>Descripción</h4>
+            <p>Durante la entrevista #298, EXP-003 responde "no, no tengo hermanos" antes de que el Dr. Lund termine de leer la pregunta 1. La pregunta 1 era sobre su comida favorita. El Dr. Lund tiene un hermano del que nunca ha hablado en la instalación.</p>
+          </div>
+          <aside class="report__aside">
+            <dl class="spec">
+              <div class="spec__row"><dt>Ubicación</dt><dd>A-01</dd></div>
+              <div class="spec__row"><dt>Experimento</dt><dd>EXP-003</dd></div>
+            </dl>
+            <p class="signature">Redactado por: Dr. H. Lund · Psicología</p>
+          </aside>
+        </div>
+      </details>
+
+      <!-- ========== INFORME 5 ========== -->
+      <details class="report" data-sev="critical">
+        <summary class="report__row">
+          <span class="report__num">INC-2046-0031</span>
+          <time class="report__date">17.03.2046</time>
+          <span class="report__title">Primera brecha biológica<small>Celda B-12 · Puerta 2</small></span>
+          <span class="report__sevcol"><span class="sev sev--critical">Crítica</span></span>
+          <span class="report__status"><span class="tag tag--deep">Redacted</span></span>
+          <span class="expand__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="report__body">
+          <div>
+            <h4>Descripción</h4>
+            <p>Un filamento de EXP-001 atraviesa la junta de la puerta 2 y alcanza el pasillo de observación. Tres miembros del personal fallecen. El filamento se retira de forma voluntaria al cabo de <span class="redacted" tabindex="0">nueve minutos</span>.</p>
+            <h4>Observaciones del Consejo</h4>
+            <p><span class="redacted" tabindex="0">Los cuerpos no presentan heridas. El tejido cerebral de las tres víctimas fue reemplazado por</span> material no identificado. Resto del informe sellado.</p>
+          </div>
+          <aside class="report__aside">
+            <dl class="spec">
+              <div class="spec__row"><dt>Ubicación</dt><dd>B-12 · Pasillo obs.</dd></div>
+              <div class="spec__row"><dt>Bajas</dt><dd class="text-red">3</dd></div>
+              <div class="spec__row"><dt>Clasificación</dt><dd><span class="tag tag--red">CLR-5</span></dd></div>
+            </dl>
+            <p class="signature">Firmado: ████████ · Consejo de Supervisión</p>
+          </aside>
+        </div>
+      </details>
+
+      <!-- ========== INFORME 6 ========== -->
+      <details class="report" data-sev="severe">
+        <summary class="report__row">
+          <span class="report__num">INC-2045-0077</span>
+          <time class="report__date">02.12.2045</time>
+          <span class="report__title">Dron de reconocimiento perdido<small>Sector 09 · EXP-002</small></span>
+          <span class="report__sevcol"><span class="sev sev--severe">Grave</span></span>
+          <span class="report__status"><span class="tag tag--red">Abierto</span></span>
+          <span class="expand__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="report__body">
+          <div>
+            <h4>Descripción</h4>
+            <p>Se introduce en EXP-002 un dron atado a un cable de acero de 500 m. El cable se desenrolla por completo en 4 segundos. Al recuperarlo, el extremo está cortado de forma limpia. La telemetría del dron sigue transmitiendo. Hoy, 709 días después, sigue transmitiendo.</p>
+            <h4>Última telemetría</h4>
+            <p class="mono-small">ALT: ∞ · TEMP: 3 K · CÁMARA: <span class="redacted" tabindex="0">luces que se acercan</span></p>
+          </div>
+          <aside class="report__aside">
+            <dl class="spec">
+              <div class="spec__row"><dt>Ubicación</dt><dd>S-09</dd></div>
+              <div class="spec__row"><dt>Experimento</dt><dd>EXP-002</dd></div>
+              <div class="spec__row"><dt>Pérdidas</dt><dd>Dron RX-4</dd></div>
+            </dl>
+            <p class="signature">Redactado por: Ing. A. Moreau · Ingeniería</p>
+          </aside>
+        </div>
+      </details>
+
+      <!-- ========== INFORME 7 ========== -->
+      <details class="report" data-sev="moderate">
+        <summary class="report__row">
+          <span class="report__num">INC-2045-0042</span>
+          <time class="report__date">09.07.2045</time>
+          <span class="report__title">Credencial de empleado fallecido<small>Terminal 4-B · Nivel −2</small></span>
+          <span class="report__sevcol"><span class="sev sev--moderate">Moderada</span></span>
+          <span class="report__status"><span class="tag">Cerrado</span></span>
+          <span class="expand__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="report__body">
+          <div>
+            <h4>Descripción</h4>
+            <p>La tarjeta del técnico J. Arenas (fallecido en INC-2046-0031) intenta acceder a la terminal 4-B. Fecha del intento: 09.07.2045, ocho meses <strong>antes</strong> de su muerte. El registro se descubrió en una auditoría de 2047.</p>
+          </div>
+          <aside class="report__aside">
+            <dl class="spec">
+              <div class="spec__row"><dt>Ubicación</dt><dd>T-4B</dd></div>
+              <div class="spec__row"><dt>Relacionado</dt><dd>EXP-003 (?)</dd></div>
+            </dl>
+            <p class="signature">Redactado por: Of. K. Brandt · Seguridad interna</p>
+          </aside>
+        </div>
+      </details>
+
+      <!-- ========== INFORME 8 ========== -->
+      <details class="report" data-sev="minor">
+        <summary class="report__row">
+          <span class="report__num">INC-2044-0003</span>
+          <time class="report__date">05.02.2044</time>
+          <span class="report__title">Broca de perforación "digerida"<small>Pozo P-3 · Superficie</small></span>
+          <span class="report__sevcol"><span class="sev sev--minor">Leve</span></span>
+          <span class="report__status"><span class="tag">Archivado</span></span>
+          <span class="expand__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="report__body">
+          <div>
+            <h4>Descripción</h4>
+            <p>Primer informe relacionado con EXP-001. La broca de tungsteno de la perforadora geológica sale del pozo pulida como un espejo y con un 30% menos de masa. Se atribuye inicialmente a un fallo del equipo.</p>
+          </div>
+          <aside class="report__aside">
+            <dl class="spec">
+              <div class="spec__row"><dt>Ubicación</dt><dd>Pozo P-3</dd></div>
+              <div class="spec__row"><dt>Experimento</dt><dd>EXP-001</dd></div>
+            </dl>
+            <p class="signature">Redactado por: Equipo geológico GEO-2</p>
+          </aside>
+        </div>
+      </details>
+
+    </section>
+
+  </main>
+
+  <!-- ===================== BARRA DE ESTADO ===================== -->
+  <footer class="statusbar">
+    <div class="hazard" aria-hidden="true"></div>
+    <div class="container">
+      <div class="statusbar__grid">
+        <div>
+          <p class="statusbar__brand">BLACKSITE</p>
+          <p>Sistema de uso exclusivo para personal autorizado de la Instalación 07. El acceso no autorizado constituye una violación de la Directiva de Seguridad Nacional 7-ΔK.</p>
+        </div>
+        <div>
+          <h4>Módulos</h4>
+          <ul>
+            <li><a href="index.html">01 Mainframe</a></li>
+            <li><a href="experiments.html">02 Database</a></li>
+            <li><a href="dossier.html">03 Dossier</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Operaciones</h4>
+          <ul>
+            <li><a href="control.html">04 Control</a></li>
+            <li><a href="incidents.html">05 Incidents</a></li>
+            <li><a href="archives.html">06 Archives</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Nodo</h4>
+          <ul>
+            <li>BS7-ΔK-0419</li>
+            <li>N 71°02'17" · E 024°51'09"</li>
+            <li>Uplink AURORA-2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="statusbar__bottom">
+        <span><span class="led led--on led--pulse" aria-hidden="true"></span>BS-OS v4.7.2 · Build 2047.11.03</span>
+        <span>Toda actividad es registrada</span>
+        <span>Contenido ficticio · Proyecto de clase</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

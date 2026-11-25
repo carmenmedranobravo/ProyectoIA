@@ -1,0 +1,32 @@
+PROJECT: BLACKSITE — IMÁGENES
+==============================
+
+La web funciona SIN imágenes: cada hueco tiene un "arte" generado con
+gradientes CSS. Si añades una foto con el nombre exacto de esta lista,
+sustituye automáticamente al arte CSS (no hay que tocar el código).
+
+Formato recomendado: JPG, horizontal, mínimo 1600 px de ancho.
+Estilo: oscuro, frío, mucho contraste. El CSS ya las pasa a casi blanco y
+negro y les devuelve el color al pasar el ratón.
+
+EXPERIMENTOS (experiments.html y dossier.html)
+- exp-001-organism.jpg      Masa orgánica rojiza vista al microscopio o en un tanque.
+                            Texturas de células, venas, tejido húmedo.
+- exp-002-void.jpg          Esfera negra perfecta en una sala industrial oscura,
+                            con un halo de luz alrededor. Sensación de vacío.
+- exp-003-subject-zero.jpg  Silueta o retrato a contraluz de una persona en una
+                            sala de aislamiento blanca o una celda.
+- exp-004-red-sun.jpg       Luz o "sol" rojo dentro de una caverna enorme, sobre un
+                            horizonte oscuro. Niebla, escala épica.
+
+ARCHIVO (archives.html)
+- archive-01-corridor.jpg     Pasillo largo de búnker con luces fluorescentes.
+- archive-02-specimen.jpg     Tanque o cápsula de laboratorio con algo dentro.
+- archive-03-surveillance.jpg Fotograma de cámara de seguridad, granulado, con una
+                              figura borrosa.
+- archive-04-sky.jpg          Techo de caverna iluminado por una luz roja.
+- archive-05-lab.jpg          Laboratorio abandonado: mesas, cristal roto, polvo.
+- archive-06-crater.jpg       Vista aérea de un cráter o agujero en el hielo.
+
+Sitios con fotos libres de derechos: unsplash.com, pexels.com.
+También puedes generarlas con una IA de imágenes usando las descripciones.

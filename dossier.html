@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BLACKSITE — Expediente de investigación EXP-001: The Organism.">
+  <title>DOSSIER EXP-001 · BLACKSITE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <div class="loadbar" aria-hidden="true"></div>
+  <div class="watermark" aria-hidden="true">CLASSIFIED</div>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="BLACKSITE — volver al Mainframe">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span>
+        <span class="brand__name">BLACKSITE</span>
+        <span class="brand__sub">FACILITY 07 // ΔK</span>
+      </span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Abrir menú">
+    <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span class="nav-burger__icon"></span>MENU</label>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="index.html"><span class="nav__num">01</span>Mainframe</a></li>
+        <li class="nav__item"><a class="nav__link" href="experiments.html"><span class="nav__num">02</span>Database</a></li>
+        <li class="nav__item"><a class="nav__link" href="dossier.html" aria-current="page"><span class="nav__num">03</span>Dossier</a></li>
+        <li class="nav__item"><a class="nav__link" href="control.html"><span class="nav__num">04</span>Control</a></li>
+        <li class="nav__item"><a class="nav__link" href="incidents.html"><span class="nav__num">05</span>Incidents</a></li>
+        <li class="nav__item nav__item--drop">
+          <a class="nav__link" href="archives.html" aria-haspopup="true"><span class="nav__num">06</span>Archives <span class="nav__caret" aria-hidden="true"></span></a>
+          <div class="dropdown">
+            <a class="dropdown__link" href="archives.html#documents"><span>06.1</span>Documentos<span>12</span></a>
+            <a class="dropdown__link" href="archives.html#photos"><span>06.2</span>Fotografías<span>06</span></a>
+            <a class="dropdown__link" href="archives.html#logs"><span>06.3</span>Registros de audio<span>03</span></a>
+            <a class="dropdown__link" href="archives.html#locked"><span>06.4</span>Expedientes bloqueados<span>04</span></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="access" role="status">
+      <span class="led led--red led--blink" aria-hidden="true"></span>
+      <span class="access__text">Restricted access</span>
+      <span class="access__lvl">CLR-4</span>
+    </div>
+  </header>
+
+  <!-- Metabarra: fecha, código de instalación, coordenadas -->
+  <div class="metabar" aria-label="Datos de sesión">
+    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val">13.11.2047 — 03:17:42 UTC</span></div>
+    <div class="metabar__item"><span class="metabar__key">Facility</span><span class="metabar__val">BS7-ΔK-0419</span></div>
+    <div class="metabar__item"><span class="metabar__key">Coords</span><span class="metabar__val">N 71°02'17" · E 024°51'09"</span></div>
+    <div class="metabar__item"><span class="metabar__key">Operator</span><span class="metabar__val">DR. M. VOSS · 7741-K</span></div>
+    <div class="metabar__item"><span class="led led--on led--pulse" aria-hidden="true"></span><span class="metabar__val">Session encrypted</span></div>
+  </div>
+
+  <!-- Raíl lateral -->
+  <aside class="rail" aria-hidden="true">
+    <span class="rail__num">03<small>/06</small></span>
+    <span class="rail__text">Dossier // EXP-001 // Rev. 14</span>
+    <span class="rail__ticks"></span>
+  </aside>
+
+  <main id="main" class="page">
+
+    <!-- ===================== CABECERA ===================== -->
+    <section class="page-head container" style="padding-bottom:clamp(24px,3vw,40px)">
+      <ol class="crumbs">
+        <li><a href="index.html">Mainframe</a></li>
+        <li><a href="experiments.html">Database</a></li>
+        <li>EXP-001</li>
+        <li>Dossier rev. 14</li>
+      </ol>
+    </section>
+
+    <!-- ===================== FICHA PRINCIPAL ===================== -->
+    <section class="container" aria-labelledby="dossier-name">
+      <div class="dossier-hero">
+        <div class="dossier-hero__media scan">
+          <div class="visual visual--organism" role="img" aria-label="Fotografía de microscopio del espécimen EXP-001"></div>
+          <div class="hud-frame" aria-hidden="true"></div>
+          <div class="crosshair" aria-hidden="true"></div>
+          <div class="visual-caption visual-caption--top" aria-hidden="true">
+            <span>CAM-B12-04 · ×400</span>
+            <span class="text-red blink">● REC</span>
+          </div>
+          <div class="visual-caption" aria-hidden="true">
+            <span>Tejido activo: 88%</span>
+            <span>Temp. 37.9 °C</span>
+            <span>Frame 0042 117</span>
+          </div>
+        </div>
+
+        <div class="dossier-hero__info">
+          <div class="dossier-id">
+            <span class="tag tag--solid">Top secret // Umbra</span>
+            <span class="stamp">Classified</span>
+          </div>
+
+          <h1 id="dossier-name" class="dossier-name">
+            <small>Expediente EXP-001 · Celda B-12</small>
+            The<br><span class="glitch glitch--hover" data-text="Organism">Organism</span>
+          </h1>
+
+          <dl class="spec">
+            <div class="spec__row"><dt>Código de identificación</dt><dd>EXP-001 / BIO-ΔK-2044-0204</dd></div>
+            <div class="spec__row"><dt>Nivel de amenaza</dt><dd><span class="threat" data-level="4" aria-label="4 de 5"><span></span><span></span><span></span><span></span><span></span></span> 4 / 5 — Alta</dd></div>
+            <div class="spec__row"><dt>Estado de contención</dt><dd><span class="led led--on led--pulse" aria-hidden="true"></span> Contenido · inestable (72%)</dd></div>
+            <div class="spec__row"><dt>Clasificación</dt><dd><span class="tag tag--red">Top secret</span><span class="tag">Umbra</span><span class="tag">NOFORN-7</span></dd></div>
+            <div class="spec__row"><dt>Investigadora jefe</dt><dd>Dra. Ilse Varga · ID 2210-B</dd></div>
+            <div class="spec__row"><dt>Origen</dt><dd>Pozo de hielo P-3 · −3.912 m · N 71°01'58"</dd></div>
+          </dl>
+
+          <div class="meter">
+            <div class="meter__row"><span>Integridad de la membrana</span><strong>72%</strong></div>
+            <div class="bar bar--seg bar--live"><span class="bar__fill" style="--value:72%"></span></div>
+          </div>
+          <div class="meter">
+            <div class="meter__row"><span>Actividad neuronal estimada</span><strong class="text-red">+340%</strong></div>
+            <div class="bar bar--red bar--striped"><span class="bar__fill" style="--value:91%; --delay:.5s"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CUERPO DEL EXPEDIENTE ===================== -->
+    <section class="section container">
+      <div class="dossier-layout">
+
+        <article class="dossier-main">
+
+          <!-- 01 · Descripción científica -->
+          <section class="dossier-block" aria-labelledby="d-desc">
+            <h3 id="d-desc"><span>01</span>Descripción científica</h3>
+            <div class="prose">
+              <p>
+                EXP-001 es una <strong>biomasa coloidal multicelular</strong> sin equivalente en ningún
+                reino taxonómico conocido. Sus células carecen de núcleo y, sin embargo, se replican
+                siguiendo patrones que el equipo de bioinformática describe como "intencionados".
+                El tejido conduce impulsos eléctricos a 120 m/s, una velocidad comparable al sistema
+                nervioso humano.
+              </p>
+              <p>
+                El espécimen responde a estímulos sonoros, lumínicos y — de forma no explicada —
+                a la <strong>presencia de observadores</strong>, incluso a través de muros de plomo de 40 cm.
+                Cuando nadie lo observa, su crecimiento se acelera un 600%. Por ello la celda B-12
+                mantiene vigilancia humana ininterrumpida en turnos de 4 horas.
+              </p>
+              <p>
+                Hipótesis vigente (H-7): no se trata de un organismo individual, sino de una
+                <span class="redacted" tabindex="0">red de comunicación de un ecosistema mayor que sigue bajo el hielo</span>.
+              </p>
+            </div>
+            <div class="figures">
+              <div><span class="label">Masa actual</span><strong>318 kg</strong></div>
+              <div><span class="label">Crecimiento</span><strong>+2,1%<small class="muted" style="font-size:.5em"> /día</small></strong></div>
+              <div><span class="label">Temperatura</span><strong>37,9 °C</strong></div>
+            </div>
+          </section>
+
+          <!-- 02 · Historial de investigación -->
+          <section class="dossier-block" aria-labelledby="d-hist">
+            <h3 id="d-hist"><span>02</span>Historial de investigación</h3>
+            <ol class="timeline">
+              <li class="timeline__item">
+                <p class="timeline__date">04.02.2044 · Pozo P-3</p>
+                <p class="timeline__title">Hallazgo</p>
+                <p class="timeline__text">Una perforadora geológica extrae un núcleo de hielo con material orgánico a 37 °C. La broca aparece "limpia" y pulida, como digerida.</p>
+              </li>
+              <li class="timeline__item">
+                <p class="timeline__date">11.02.2044 · Laboratorio L-2</p>
+                <p class="timeline__title">Primer crecimiento</p>
+                <p class="timeline__text">La muestra pasa de 14 g a 2,1 kg en una noche sin aporte de nutrientes. Se traslada a la celda B-12.</p>
+              </li>
+              <li class="timeline__item">
+                <p class="timeline__date">03.09.2044 · Día 212</p>
+                <p class="timeline__title">Mimetismo acústico</p>
+                <p class="timeline__text">El micrófono interno registra la voz del técnico J. Arenas diciendo "abre la puerta". El técnico Arenas estaba en la cafetería.</p>
+              </li>
+              <li class="timeline__item timeline__item--alert">
+                <p class="timeline__date">17.03.2046 · Incidente INC-2046-0031</p>
+                <p class="timeline__title text-red">Primera brecha</p>
+                <p class="timeline__text">Un filamento atraviesa la junta de la puerta 2. Tres bajas. El tejido se retira por sí solo tras <span class="redacted" tabindex="0">recibir lo que buscaba</span>.</p>
+              </li>
+              <li class="timeline__item">
+                <p class="timeline__date">13.11.2047 · Hoy</p>
+                <p class="timeline__title">Revisión 14 del expediente</p>
+                <p class="timeline__text">Actividad neuronal +340% respecto a la media. Se recomienda elevar la clasificación a nivel 5.</p>
+              </li>
+            </ol>
+          </section>
+
+          <!-- 03 · Observaciones -->
+          <section class="dossier-block" aria-labelledby="d-obs">
+            <h3 id="d-obs"><span>03</span>Observaciones</h3>
+            <div class="obs">
+              <article class="obs__entry">
+                <p class="obs__meta"><span>OBS-0412 · Dra. I. Varga</span><time>12.11.2047 · 22:40</time></p>
+                <p>El espécimen ha formado una estructura en espiral en el centro de la celda. Mide exactamente 1,618 m de diámetro. Nadie en el equipo cree que sea casualidad.</p>
+              </article>
+              <article class="obs__entry">
+                <p class="obs__meta"><span>OBS-0413 · Téc. R. Okafor</span><time>13.11.2047 · 01:05</time></p>
+                <p>Al apagar las luces de la celda, el tejido emite una bioluminiscencia tenue con un patrón que se repite cada 7 segundos. Criptografía ha identificado el patrón: es <span class="redacted" tabindex="0">la secuencia de apertura de la puerta 2</span>.</p>
+              </article>
+              <article class="obs__entry obs__entry--alert">
+                <p class="obs__meta"><span class="text-red">OBS-0414 · Seguridad interna</span><time>13.11.2047 · 02:58</time></p>
+                <p>Alerta: la alarma de la celda se ha activado sin causa aparente. Las grabaciones confirman que el sonido no procedía del sistema. <strong>Procedía del espécimen.</strong></p>
+              </article>
+            </div>
+          </section>
+
+          <!-- 04 · Documentos restringidos -->
+          <section class="dossier-block" aria-labelledby="d-docs">
+            <h3 id="d-docs"><span>04</span>Documentos restringidos</h3>
+
+            <details class="expand">
+              <summary class="expand__summary">
+                <span class="doc-icon" aria-hidden="true"></span>
+                <span class="doc-row__name">Protocolo de contención B-12<small>PDF · 14 págs · CLR-4</small></span>
+                <span class="expand__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="expand__body prose">
+                <p>1. Vigilancia visual humana continua, mínimo dos observadores. 2. Prohibido hablar dentro de la celda. 3. Cualquier voz que pida abrir la puerta debe ignorarse, <strong>incluida la suya propia</strong>. 4. Temperatura ambiente constante a −20 °C.</p>
+              </div>
+            </details>
+
+            <details class="expand">
+              <summary class="expand__summary">
+                <span class="doc-icon" aria-hidden="true"></span>
+                <span class="doc-row__name">Análisis genómico preliminar<small>DAT · 2.3 GB · CLR-4</small></span>
+                <span class="expand__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="expand__body prose">
+                <p>Secuencias de 6 bases en lugar de 4. El 12% del genoma coincide con muestras de <span class="redacted" tabindex="0">tejido humano del personal de la instalación</span>. El 88% restante no coincide con nada en la Tierra.</p>
+              </div>
+            </details>
+
+            <details class="expand">
+              <summary class="expand__summary">
+                <span class="doc-icon doc-icon--locked" aria-hidden="true"></span>
+                <span class="doc-row__name">Autopsias INC-2046-0031<small>3 archivos · CLR-5</small></span>
+                <span class="expand__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="expand__body">
+                <div class="doc-row">
+                  <span class="doc-icon doc-icon--locked" aria-hidden="true"></span>
+                  <span class="doc-row__name">Contenido sellado por el Consejo<small>Su intento de acceso será registrado</small></span>
+                  <a class="btn btn--locked btn--sm" href="#doc-locked">Solicitar acceso</a>
+                </div>
+              </div>
+            </details>
+          </section>
+        </article>
+
+        <!-- ===================== COLUMNA LATERAL ===================== -->
+        <aside class="dossier-side" aria-label="Información de seguridad">
+
+          <section class="warning-box alarm-flash" aria-labelledby="w-title">
+            <h3 id="w-title" class="warning-box__head"><span class="warning-box__icon" aria-hidden="true"></span>Advertencias de seguridad</h3>
+            <ul class="warning-box__body">
+              <li>No permanecer a solas con el espécimen bajo ninguna circunstancia.</li>
+              <li>No responder a voces conocidas procedentes de la celda.</li>
+              <li>Prohibido introducir material orgánico (incluida comida) en el nivel −4.</li>
+              <li>Ante cualquier filamento fuera de la celda: activar purga térmica y evacuar.</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <header class="panel__head">
+              <h3 class="panel__title"><span class="led led--red led--pulse" aria-hidden="true"></span>Constantes</h3>
+              <span class="panel__code">BIO-MON</span>
+            </header>
+            <div class="panel__body">
+              <div class="ecg" aria-hidden="true">
+                <svg viewBox="0 0 300 70" preserveAspectRatio="none">
+                  <path d="M0 40 H60 L70 40 L78 20 L86 58 L94 10 L102 46 L110 40 H170 L178 40 L186 24 L194 54 L202 6 L210 44 L218 40 H300"/>
+                </svg>
+              </div>
+              <div class="meter">
+                <div class="meter__row"><span>Pulso eléctrico</span><strong>71 Hz</strong></div>
+                <div class="bar bar--live"><span class="bar__fill" style="--value:71%"></span></div>
+              </div>
+              <div class="meter">
+                <div class="meter__row"><span>Presión interna</span><strong>2,1 bar</strong></div>
+                <div class="bar bar--live"><span class="bar__fill" style="--value:52%; --delay:.4s"></span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <header class="panel__head">
+              <h3 class="panel__title">Checklist de contención</h3>
+              <span class="panel__code">PRT-B12</span>
+            </header>
+            <div class="panel__body">
+              <ul class="checklist">
+                <li class="is-done">Observadores en posición (2/2)</li>
+                <li class="is-done">Temperatura de celda −20 °C</li>
+                <li class="is-done">Puerta 2 sellada y verificada</li>
+                <li class="is-fail">Silencio acústico — voces detectadas</li>
+                <li>Purga térmica en espera</li>
+              </ul>
+            </div>
+          </section>
+
+          <a class="btn btn--ghost btn--block" href="experiments.html">← Volver a la base de datos</a>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- ===================== OVERLAYS (:target) ===================== -->
+    <!-- Acceso denegado para expedientes de nivel 5 -->
+    <div class="modal" id="denied-002" role="dialog" aria-modal="true" aria-labelledby="den-002-t">
+      <div class="modal__box">
+        <div class="hazard" aria-hidden="true"></div>
+        <header class="modal__head"><span><span class="led led--red led--blink" aria-hidden="true"></span>&nbsp; Access denied · ERR-403-Δ</span><a class="modal__close" href="#" aria-label="Cerrar">✕</a></header>
+        <div class="modal__body">
+          <p class="label">Solicitud: dossier EXP-002 // THE VOID</p>
+          <h2 id="den-002-t" class="modal__title">Autorización <span class="text-red">insuficiente</span></h2>
+          <p>Su credencial CLR-4 no permite consultar este expediente. Este intento ha sido registrado y notificado al Oficial de Seguridad de guardia.</p>
+          <p class="mono-small muted">LOG-ID 0x7F3A-002 · TERMINAL T-01 · 03:17:44 UTC</p>
+          <div class="modal__actions">
+            <a class="btn btn--primary" href="#">Ver expediente disponible (EXP-001)</a>
+            <a class="btn btn--ghost" href="experiments.html">Volver a la base de datos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="denied-003" role="dialog" aria-modal="true" aria-labelledby="den-003-t">
+      <div class="modal__box">
+        <div class="hazard" aria-hidden="true"></div>
+        <header class="modal__head"><span><span class="led led--red led--blink" aria-hidden="true"></span>&nbsp; Access denied · ERR-403-Δ</span><a class="modal__close" href="#" aria-label="Cerrar">✕</a></header>
+        <div class="modal__body">
+          <p class="label">Solicitud: dossier EXP-003 // SUBJECT ZERO</p>
+          <h2 id="den-003-t" class="modal__title">Expediente <span class="text-red">en uso</span></h2>
+          <p>El expediente está siendo consultado en este momento por otro usuario. Según el registro, ese usuario es usted, dentro de 3 segundos.</p>
+          <p class="mono-small muted">LOG-ID 0x7F3A-003 · TERMINAL T-01 · 03:17:47 UTC</p>
+          <div class="modal__actions">
+            <a class="btn btn--primary" href="#">Ver expediente disponible (EXP-001)</a>
+            <a class="btn btn--ghost" href="experiments.html">Volver a la base de datos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="denied-004" role="dialog" aria-modal="true" aria-labelledby="den-004-t">
+      <div class="modal__box">
+        <div class="hazard" aria-hidden="true"></div>
+        <header class="modal__head"><span><span class="led led--red led--blink" aria-hidden="true"></span>&nbsp; Access denied · ERR-403-Δ</span><a class="modal__close" href="#" aria-label="Cerrar">✕</a></header>
+        <div class="modal__body">
+          <p class="label">Solicitud: dossier EXP-004 // RED SUN</p>
+          <h2 id="den-004-t" class="modal__title">Archivo <span class="text-red">corrupto</span></h2>
+          <p>El expediente se reescribe solo cada noche a las 03:00. La versión actual contiene 4.000 páginas con una única frase repetida. Se ha restringido su lectura por motivos de salud mental.</p>
+          <p class="mono-small muted">LOG-ID 0x7F3A-004 · TERMINAL T-01 · 03:17:51 UTC</p>
+          <div class="modal__actions">
+            <a class="btn btn--primary" href="#">Ver expediente disponible (EXP-001)</a>
+            <a class="btn btn--ghost" href="experiments.html">Volver a la base de datos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="doc-locked" role="dialog" aria-modal="true" aria-labelledby="doc-locked-t">
+      <div class="modal__box">
+        <div class="hazard" aria-hidden="true"></div>
+        <header class="modal__head"><span>Solicitud de acceso · CLR-5</span><a class="modal__close" href="#d-docs" aria-label="Cerrar">✕</a></header>
+        <div class="modal__body">
+          <h2 id="doc-locked-t" class="modal__title">Solicitud <span class="text-red">enviada</span></h2>
+          <p>Su petición ha sido remitida al Consejo de Supervisión. Tiempo medio de respuesta: 340 días. Le recomendamos no preguntar por el estado de la solicitud.</p>
+          <div class="meter">
+            <div class="meter__row"><span>Procesando</span><strong class="blink">…</strong></div>
+            <div class="bar bar--striped"><span class="bar__fill" style="--value:12%"></span></div>
+          </div>
+          <div class="modal__actions">
+            <a class="btn btn--ghost" href="#d-docs">Entendido</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- ===================== BARRA DE ESTADO ===================== -->
+  <footer class="statusbar">
+    <div class="hazard" aria-hidden="true"></div>
+    <div class="container">
+      <div class="statusbar__grid">
+        <div>
+          <p class="statusbar__brand">BLACKSITE</p>
+          <p>Sistema de uso exclusivo para personal autorizado de la Instalación 07. El acceso no autorizado constituye una violación de la Directiva de Seguridad Nacional 7-ΔK.</p>
+        </div>
+        <div>
+          <h4>Módulos</h4>
+          <ul>
+            <li><a href="index.html">01 Mainframe</a></li>
+            <li><a href="experiments.html">02 Database</a></li>
+            <li><a href="dossier.html">03 Dossier</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Operaciones</h4>
+          <ul>
+            <li><a href="control.html">04 Control</a></li>
+            <li><a href="incidents.html">05 Incidents</a></li>
+            <li><a href="archives.html">06 Archives</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Nodo</h4>
+          <ul>
+            <li>BS7-ΔK-0419</li>
+            <li>N 71°02'17" · E 024°51'09"</li>
+            <li>Uplink AURORA-2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="statusbar__bottom">
+        <span><span class="led led--on led--pulse" aria-hidden="true"></span>BS-OS v4.7.2 · Build 2047.11.03</span>
+        <span>Toda actividad es registrada</span>
+        <span>Contenido ficticio · Proyecto de clase</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
