@@ -9,8 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Núcleo JS: sin defer para marcar <html class="js"> antes del primer pintado -->
+  <script src="js/core.js"></script>
 </head>
-<body>
+<body data-page="mainframe">
 
   <a class="skip-link" href="#main">Saltar al contenido</a>
 
@@ -70,7 +72,7 @@
 
   <!-- Metabarra: fecha, código de instalación, coordenadas -->
   <div class="metabar" aria-label="Datos de sesión">
-    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val">13.11.2047 — 03:17:42 UTC</span></div>
+    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val" data-clock>13.11.2047 — 03:17:42 UTC</span></div>
     <div class="metabar__item"><span class="metabar__key">Facility</span><span class="metabar__val">BS7-ΔK-0419</span></div>
     <div class="metabar__item"><span class="metabar__key">Coords</span><span class="metabar__val">N 71°02'17" · E 024°51'09"</span></div>
     <div class="metabar__item"><span class="metabar__key">Operator</span><span class="metabar__val">DR. M. VOSS · 7741-K</span></div>
@@ -112,6 +114,7 @@
           <div class="hero__actions">
             <a class="btn btn--primary" href="experiments.html">Acceder a la base de datos <span class="btn__arrow" aria-hidden="true">→</span></a>
             <a class="btn btn--ghost" href="control.html">Panel de contención <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <button type="button" class="btn btn--ghost js-only" data-action="terminal">Abrir terminal <span class="btn__arrow" aria-hidden="true">&gt;_</span></button>
           </div>
 
           <dl class="hero__codes">
@@ -168,7 +171,7 @@
       <header class="section-head">
         <span class="section-head__num">01 /</span>
         <h2 id="status-title" class="section-head__title">Estado de la instalación</h2>
-        <span class="section-head__meta">Actualizado hace 00:00:04</span>
+        <span class="section-head__meta" data-updated>Actualizado hace 00:00:04</span>
       </header>
 
       <div class="stats-grid">
@@ -179,12 +182,12 @@
         </article>
         <article class="stat">
           <span class="label">Integridad de contención</span>
-          <span class="stat__value">87.4<span class="stat__unit">%</span></span>
+          <span class="stat__value" data-bind="integrity-avg">87.4<span class="stat__unit">%</span></span>
           <div class="bar bar--seg bar--live"><span class="bar__fill" style="--value:87%"></span></div>
         </article>
         <article class="stat">
           <span class="label">Personal en instalación</span>
-          <span class="stat__value">142</span>
+          <span class="stat__value" data-bind="personnel">142</span>
           <span class="stat__note"><span class="led led--on" aria-hidden="true"></span>3 sin localizar</span>
         </article>
         <article class="stat stat--alert alarm-flash">
@@ -205,26 +208,26 @@
             <div class="containment-row">
               <span class="containment-row__id">EXP-001</span>
               <span class="containment-row__name">The Organism</span>
-              <div class="bar bar--live"><span class="bar__fill" style="--value:72%"></span></div>
-              <span class="containment-row__pct">72%</span>
+              <div class="bar bar--live"><span class="bar__fill" data-bind="integrity-bar" data-exp="EXP-001" style="--value:72%"></span></div>
+              <span class="containment-row__pct" data-bind="integrity" data-exp="EXP-001">72%</span>
             </div>
             <div class="containment-row">
               <span class="containment-row__id">EXP-002</span>
               <span class="containment-row__name">The Void <span class="tag tag--red">Riesgo de brecha</span></span>
-              <div class="bar bar--red bar--live"><span class="bar__fill" style="--value:41%; --delay:.4s"></span></div>
-              <span class="containment-row__pct text-red">41%</span>
+              <div class="bar bar--red bar--live"><span class="bar__fill" data-bind="integrity-bar" data-exp="EXP-002" style="--value:41%; --delay:.4s"></span></div>
+              <span class="containment-row__pct text-red" data-bind="integrity" data-exp="EXP-002">41%</span>
             </div>
             <div class="containment-row">
               <span class="containment-row__id">EXP-003</span>
               <span class="containment-row__name">Subject Zero</span>
-              <div class="bar"><span class="bar__fill" style="--value:96%; --delay:.6s"></span></div>
-              <span class="containment-row__pct">96%</span>
+              <div class="bar"><span class="bar__fill" data-bind="integrity-bar" data-exp="EXP-003" style="--value:96%; --delay:.6s"></span></div>
+              <span class="containment-row__pct" data-bind="integrity" data-exp="EXP-003">96%</span>
             </div>
             <div class="containment-row">
               <span class="containment-row__id">EXP-004</span>
               <span class="containment-row__name">Red Sun</span>
-              <div class="bar bar--striped"><span class="bar__fill" style="--value:58%; --delay:.8s"></span></div>
-              <span class="containment-row__pct">58%</span>
+              <div class="bar bar--striped"><span class="bar__fill" data-bind="integrity-bar" data-exp="EXP-004" style="--value:58%; --delay:.8s"></span></div>
+              <span class="containment-row__pct" data-bind="integrity" data-exp="EXP-004">58%</span>
             </div>
           </div>
           <footer class="panel__foot">
@@ -428,5 +431,26 @@
     </div>
   </footer>
 
+  <!-- ============ CAPA INTERACTIVA · BLACKSITE OS v2.0 ============ -->
+  <script src="js/data.js" defer></script>
+  <script src="js/prefs.js" defer></script>
+  <script src="js/audio.js" defer></script>
+  <script src="js/notify.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/secrets.js" defer></script>
+  <script src="js/clock.js" defer></script>
+  <script src="js/boot.js" defer></script>
+  <script src="js/transitions.js" defer></script>
+  <script src="js/cursor.js" defer></script>
+  <script src="js/monitor.js" defer></script>
+  <script src="js/anomalies.js" defer></script>
+  <script src="js/alarms.js" defer></script>
+  <script src="js/terminal.js" defer></script>
+  <script src="js/database.js" defer></script>
+  <script src="js/dossier.js" defer></script>
+  <script src="js/control.js" defer></script>
+  <script src="js/incidents.js" defer></script>
+  <script src="js/archives.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

@@ -9,8 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Núcleo JS: sin defer para marcar <html class="js"> antes del primer pintado -->
+  <script src="js/core.js"></script>
 </head>
-<body>
+<body data-page="dossier">
 
   <a class="skip-link" href="#main">Saltar al contenido</a>
 
@@ -58,7 +60,7 @@
 
   <!-- Metabarra: fecha, código de instalación, coordenadas -->
   <div class="metabar" aria-label="Datos de sesión">
-    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val">13.11.2047 — 03:17:42 UTC</span></div>
+    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val" data-clock>13.11.2047 — 03:17:42 UTC</span></div>
     <div class="metabar__item"><span class="metabar__key">Facility</span><span class="metabar__val">BS7-ΔK-0419</span></div>
     <div class="metabar__item"><span class="metabar__key">Coords</span><span class="metabar__val">N 71°02'17" · E 024°51'09"</span></div>
     <div class="metabar__item"><span class="metabar__key">Operator</span><span class="metabar__val">DR. M. VOSS · 7741-K</span></div>
@@ -435,5 +437,26 @@
     </div>
   </footer>
 
+  <!-- ============ CAPA INTERACTIVA · BLACKSITE OS v2.0 ============ -->
+  <script src="js/data.js" defer></script>
+  <script src="js/prefs.js" defer></script>
+  <script src="js/audio.js" defer></script>
+  <script src="js/notify.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/secrets.js" defer></script>
+  <script src="js/clock.js" defer></script>
+  <script src="js/boot.js" defer></script>
+  <script src="js/transitions.js" defer></script>
+  <script src="js/cursor.js" defer></script>
+  <script src="js/monitor.js" defer></script>
+  <script src="js/anomalies.js" defer></script>
+  <script src="js/alarms.js" defer></script>
+  <script src="js/terminal.js" defer></script>
+  <script src="js/database.js" defer></script>
+  <script src="js/dossier.js" defer></script>
+  <script src="js/control.js" defer></script>
+  <script src="js/incidents.js" defer></script>
+  <script src="js/archives.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

@@ -1,13 +1,237 @@
-# ProyectoIA — Registro de prompts
+# PROJECT: BLACKSITE
 
-Prompts usados para generar las webs de este proyecto (concurso de clase) con Claude.
-Todas las webs están hechas **solo con HTML y CSS**, sin JavaScript.
+> Sistema informático interno de la **Instalación 07**, una base científica ultrasecreta que
+> investiga experimentos y anomalías que no deberían existir.
+> Proyecto de clase · HTML5 + CSS3 + JavaScript Vanilla (ES6+) · sin frameworks ni librerías.
+
+**Estado:** v2.0 — capa interactiva con JavaScript completada y probada.
+
+---
+
+## 1. Descripción
+
+BLACKSITE es una web de varias páginas que imita la terminal de control de una instalación
+secreta: estética *dark sci-fi* industrial, interfaz tipo HUD, expedientes clasificados y
+paneles de monitorización.
+
+- **v1.0**: toda la experiencia está hecha solo con HTML y CSS (radios, `:checked`, `:target`,
+  `:has()`, animaciones…).
+- **v2.0**: una capa de **JavaScript Vanilla** convierte la web en un sistema "vivo". Añade
+  terminal de comandos, arranque del sistema, reloj real, alertas, eventos aleatorios,
+  buscadores, mapa interactivo, alarmas, secretos, sonido y preferencias guardadas.
+
+La capa JS es una **mejora progresiva**: si JavaScript no está disponible, la web sigue
+funcionando como en la v1.0. No se ha cambiado la composición, los colores, las tipografías ni
+la navegación. Los estilos nuevos están en la sección 17 de `style.css` y reutilizan las
+variables y componentes existentes (`.panel`, `.btn`, `.modal`, `.switch`, `.tag`…).
+
+---
+
+## 2. Estructura de carpetas
+
+```
+BLACKSITE/
+├── index.html            01 · Mainframe
+├── experiments.html      02 · Database
+├── dossier.html          03 · Dossier (EXP-001)
+├── control.html          04 · Containment Control
+├── incidents.html        05 · Incident Reports
+├── archives.html         06 · Classified Archives
+├── README.md
+├── css/
+│   └── style.css         Hoja de estilos única (secciones 00–17; la 17 es la capa JS)
+├── js/
+│   ├── core.js           Núcleo: espacio BS, utilidades, almacenamiento, eventos, módulos
+│   ├── data.js           Datos compartidos (experimentos, incidentes, archivo, fotos)
+│   ├── prefs.js          Preferencias y favoritos (localStorage)
+│   ├── audio.js          Efectos de sonido sintetizados (Web Audio API)
+│   ├── notify.js         Notificaciones y registro de alertas
+│   ├── ui.js             Modales, paneles laterales, dock y ajustes
+│   ├── secrets.js        Descubrimientos secretos y códigos
+│   ├── clock.js          Reloj en tiempo real
+│   ├── boot.js           SYSTEM BOOT SEQUENCE
+│   ├── transitions.js    Transiciones cinematográficas entre páginas
+│   ├── cursor.js         Cursor táctico (escritorio)
+│   ├── monitor.js        Estado vivo y panel de monitorización
+│   ├── anomalies.js      Eventos aleatorios
+│   ├── alarms.js         Alarmas y estados de emergencia
+│   ├── terminal.js       Terminal interactiva
+│   ├── database.js       Página Database
+│   ├── dossier.js        Página Dossier
+│   ├── control.js        Página Containment Control (incluye el mapa)
+│   ├── incidents.js      Página Incident Reports
+│   ├── archives.js       Página Classified Archives
+│   └── main.js           Punto de entrada (arranca los módulos)
+└── assets/
+    └── images/           Fotos opcionales (ver LEEME.txt)
+```
+
+---
+
+## 3. Funcionalidades JavaScript
+
+| Funcionalidad | Dónde | Cómo se usa |
+|---|---|---|
+| **Terminal interactiva** | Todas las páginas | Tecla `º` / `` ` ``, botón `>_ Terminal` del dock o "Abrir terminal" en el Mainframe. Comandos: `HELP`, `STATUS`, `EXPERIMENTS [ID]`, `INCIDENTS [gravedad]`, `ARCHIVES [texto]`, `OPEN <módulo>`, `ALARM <0/1/2/OFF/OMEGA>`, `SCAN`, `CODE <código>`, `DISCOVERIES`, `FAVORITES`, `SOUND ON/OFF`, `WHOAMI`, `DATE`, `HISTORY`, `CLEAR`, `EXIT`. Historial con ↑ ↓ y autocompletado con Tab. |
+| **SYSTEM BOOT SEQUENCE** | Primera página de la sesión | Diagnóstico línea a línea, barra de progreso, escáner biométrico y "ACCESS GRANTED". Se omite con cualquier tecla. Configurable: una vez por sesión, siempre o nunca. |
+| **Reloj en tiempo real** | Metabarra de todas las páginas | Hora UTC real con el año fijado en 2047. Contador "Actualizado hace…" en el Mainframe. Se vuelve loco con las anomalías temporales. |
+| **Notificaciones y alertas** | Todas | Avisos con nivel (info / ok / aviso / crítica), barra de vida, acciones y registro de la sesión en el dock (`▲ Alertas`). |
+| **Eventos aleatorios** | Todas | Cada 25–55 s: interferencias, apagones, fallos de contención, anomalías temporales, contactos y voces. Se pueden desactivar en Ajustes. |
+| **Buscador y filtros** | Database | Búsqueda de texto (atajo `/`), orden por ID / amenaza / contención y filtro de favoritos. Se combina con el filtro CSS de amenaza. |
+| **Modales ampliados** | Database | "Vista rápida" de cada experimento: imagen, ficha completa, informe ampliado (censurado sin CLR-5) e integridad en tiempo real. |
+| **Pestañas** | Dossier | Las 4 secciones del expediente se muestran en pestañas accesibles (teclado ← →). Recuerda la última abierta. |
+| **Documentos desbloqueables** | Dossier y Archives | Autopsias (Dossier), LCK-01/02 (descifrado con animación y memoria) y LCK-03/04 (con código). |
+| **Monitorización dinámica** | Mainframe y Control | Integridad, temperaturas, energía, baterías y personal evolucionan en directo. El registro de actividad recibe eventos. |
+| **Mapa interactivo** | Control | Selección de sector (clic / Enter), cámara de seguridad, sellar / abrir y envío de equipos tácticos con informe. |
+| **Alarmas y emergencias** | Todas (estado compartido) | Niveles Normal, Alerta, Lockdown (luces y sirena) y Omega (cuenta atrás simulada). Selector de modo en Control. Se mantiene al cambiar de página. |
+| **Controles reales** | Control | ACK de alarmas, reinicio de sensores, purga térmica, evacuación, sellado del ascensor e interruptores con efectos (p. ej. apagar la luz de B-12 baja la contención). |
+| **Archivo secreto** | Archives | Buscador de texto completo y categorías (Documentos, Fotografías, Registros, Bloqueados). |
+| **Descubrimientos secretos** | Todas | 6 secretos con códigos ocultos en el contenido (ver sección 6). |
+| **Transiciones cinematográficas** | Enlaces internos | Obturador que se cierra con el nombre del módulo de destino y se abre en la página nueva. |
+| **Preferencias y favoritos** | Dock → `⚙ Ajustes` | Sonido, volumen, cursor, efectos CRT, eventos, arranque, favoritos (★ en experimentos e informes) y progreso. Todo en `localStorage`. |
+| **Cursor personalizado** | Escritorio con ratón | Anillo con inercia, punto rojo y coordenadas. Crece sobre elementos interactivos. |
+| **Sonido opcional** | Dock → `♪ Sonido` | Clics, avisos, sirena, arranque y desbloqueos sintetizados en tiempo real (sin archivos). Desactivado por defecto. |
+
+---
+
+## 4. Módulos JavaScript
+
+Todos los archivos usan **scripts clásicos con `defer`** (no módulos ES). Así la web funciona
+también abriendo `index.html` con doble clic. Cada archivo es una IIFE que se registra en el
+núcleo con `BS.register(nombre, { pages, init })`. `main.js` arranca solo los módulos de la
+página actual (`<body data-page="…">`). Cada inicio va dentro de un `try/catch`, de modo que
+un fallo en un módulo no rompe los demás. Los módulos se comunican con un bus de eventos
+(`BS.on` / `BS.emit`) y no se llaman directamente entre sí.
+
+| Módulo | Responsabilidad | API / eventos principales |
+|---|---|---|
+| `core.js` | Se carga en `<head>` sin `defer` y añade `<html class="js">` antes del primer pintado. Utilidades DOM (`BS.el`, `BS.$`), almacenamiento seguro (`BS.store`, `BS.session`), bus de eventos y registro de módulos. | `BS.register`, `BS.start`, `BS.on/emit` |
+| `data.js` | Única fuente de datos: páginas, experimentos (y EXP-005 oculto), incidentes, índice del archivo y lista de fotos disponibles. | `BS.data`, `BS.applyPhotos` |
+| `prefs.js` | Preferencias con valores por defecto y favoritos persistentes. Crea los botones ★. | `BS.prefs`, `BS.favorites`, `prefs:change` |
+| `audio.js` | Sintetiza todos los sonidos con osciladores y ruido. La sirena funciona en bucle. Respeta el volumen. | `BS.sfx.play()`, `BS.sfx.siren()` |
+| `notify.js` | Toasts accesibles (`aria-live`), registro de sesión, contador de no leídas y silencio en el apagón de comunicaciones. | `BS.notify()`, `notify` |
+| `ui.js` | Modal genérico (con la piel de los modales `:target`), paneles laterales, dock, panel de ajustes y cierre con Escape de los modales CSS. | `BS.ui.modal`, `BS.ui.drawer` |
+| `secrets.js` | Códigos tecleados en cualquier parte, Konami, enlace oculto, formulario de código y progreso guardado. | `BS.secrets`, `secret:unlocked` |
+| `clock.js` | Reloj UTC alineado al segundo y contador "Actualizado hace". | `BS.clock`, escucha `anomaly:time` |
+| `boot.js` | Pantalla de arranque asíncrona (async/await) que se puede omitir. | `boot:done`, `<html class="booted">` |
+| `transitions.js` | Intercepta enlaces internos y guarda el destino en `sessionStorage` para la entrada. | — |
+| `cursor.js` | Bucle `requestAnimationFrame` con interpolación. Solo con `pointer: fine`. | — |
+| `monitor.js` | Estado de la instalación (paseo aleatorio, umbrales, guardado por sesión) y enlace con el DOM mediante `data-bind`. | `BS.state`, `BS.monitor`, `state:update` |
+| `anomalies.js` | Planificador de eventos aleatorios ponderados. | `BS.anomalies.trigger()`, `anomaly` |
+| `alarms.js` | Máquina de estados de alarma con banner, luces, sirena y cuenta atrás Omega. | `BS.alarm.set/clear/omega`, `alarm:change` |
+| `terminal.js` | Intérprete de comandos con historial, autocompletado y salida tabulada. | `BS.terminal.open/run` |
+| `database.js` | Filtros combinados, orden, vista rápida y aparición de EXP-005. | — |
+| `dossier.js` | Pestañas ARIA (`tablist` / `tab` / `tabpanel`) y documento de autopsias. | — |
+| `control.js` | Modos, ACK, acciones con estado ocupado, interruptores, Omega y mapa. | — |
+| `incidents.js` | Buscador, favoritos, expandir / contraer y enlaces directos `#INC-…`. | — |
+| `archives.js` | Buscador, categorías, descifrado con animación y expedientes sellados. | — |
+| `main.js` | Llama a `BS.start()`. | — |
+
+**Integración en el HTML:** solo se han añadido atributos y etiquetas `<script>`, sin cambiar
+la estructura. Se añadieron `data-page` (en `<body>`), `data-clock`, `data-updated`,
+`data-bind` (valores vivos), `data-cmd` (botones de control), `data-switch` (interruptores) y un
+botón `js-only` "Abrir terminal".
+
+---
+
+## 5. Cómo ejecutar el proyecto
+
+1. **Opción rápida:** abrir `index.html` con doble clic. Todo funciona sin servidor.
+2. **Recomendado:** usar un servidor local para que también funcionen las transiciones de
+   página nativas del navegador (View Transitions):
+
+   ```bash
+   cd BLACKSITE
+   python3 -m http.server 8047
+   ```
+
+   y abrir <http://localhost:8047>.
+3. Navegador recomendado: Chrome, Edge, Safari o Firefox actuales (se usa `:has()`).
+
+**Fotos opcionales:** copie las fotos en `assets/images/` con los nombres de `LEEME.txt` y
+añada cada nombre a `BS.data.photos` en `js/data.js`. Sin JavaScript se cargan solas. Con
+JavaScript solo se piden las de la lista, para no generar errores 404 en consola.
+
+---
+
+## 6. Descubrimientos secretos (spoilers)
+
+<details>
+<summary>Mostrar códigos</summary>
+
+| Secreto | Código / acción | Pista en la web | Recompensa |
+|---|---|---|---|
+| Modo CLR-5 | `↑ ↑ ↓ ↓ ← → ← → B A` | Mensaje en la consola del navegador | Se revela todo el texto censurado y se activan los botones CLR-5 de Control |
+| Proyecto ESPEJO | `7741K` | Credencial del operador en la metabarra | Desbloquea LCK-03 |
+| EXP-005 · The Echo | `0300` | Hora del sol rojo (EXP-004) | Nuevo experimento en Database y LCK-04 |
+| Autopsias | `ARENAS` | Técnico J. Arenas (Dossier, Archives) | Documento CLR-5 del Dossier |
+| Llave del Director | `HALVORSEN` | Firma del memorándum Nº 0007 | Autoriza el Protocolo Omega (cuenta atrás) |
+| Archivo Ω | Punto rojo casi invisible en LCK-04 | Archives → Bloqueados | Mensaje desde mañana |
+
+Los códigos se pueden teclear en cualquier página, con `CODE <código>` en la terminal o en los
+formularios de documentos bloqueados.
+</details>
+
+---
+
+## 7. Registro de cambios
+
+| Versión | Fecha | Cambios |
+|---------|-------|---------|
+| 1.0 | 25.11.2026 | Web completa en HTML + CSS: 6 páginas, identidad visual y efectos CSS. |
+| 2.0-dev | 25.11.2026 | Inicio de la capa JavaScript. README reorganizado con todos los prompts íntegros. |
+| 2.0-dev | 25.11.2026 | Módulos base: núcleo, datos, preferencias, audio, notificaciones, interfaz. |
+| 2.0-dev | 25.11.2026 | Módulos globales: reloj, arranque, transiciones, cursor, terminal, secretos, monitor, anomalías y alarmas. |
+| 2.0-dev | 25.11.2026 | Módulos de página: Database, Dossier, Control (mapa), Incidents y Archives. |
+| 2.0-dev | 25.11.2026 | Integración en los 6 HTML (`data-page`, `data-bind`, `data-cmd`, `data-switch`, scripts). |
+| 2.0 | 25.11.2026 | Pruebas y correcciones: foco inmediato de la terminal, apertura de modales sin depender de `requestAnimationFrame`, descifrado con temporizador, fotos opcionales sin errores 404, deriva de EXP-002 más suave. Verificado: 0 errores nuevos en consola y ningún desbordamiento horizontal a 375 y 768 px. |
+
+---
+
+## 8. Funcionalidades completadas y pendientes
+
+**Completadas**
+
+- [x] Terminal interactiva (HELP, STATUS, EXPERIMENTS, INCIDENTS, ARCHIVES, CLEAR y 12 comandos más)
+- [x] SYSTEM BOOT SEQUENCE
+- [x] Reloj digital en tiempo real
+- [x] Sistema de notificaciones y alertas dinámicas con registro
+- [x] Eventos aleatorios de anomalías, fallos de contención e interferencias
+- [x] Buscador, orden y filtros funcionales en la base de datos
+- [x] Modales con información ampliada de los experimentos
+- [x] Pestañas interactivas en el expediente
+- [x] Documentos clasificados desbloqueables
+- [x] Panel de monitorización con valores dinámicos
+- [x] Mapa interactivo de la instalación
+- [x] Simulación de alarmas y estados de emergencia (incluido Omega)
+- [x] Archivo secreto con buscador y categorías
+- [x] Descubrimientos secretos mediante códigos ocultos
+- [x] Transiciones cinematográficas entre páginas
+- [x] Preferencias y favoritos con localStorage
+- [x] Cursor personalizado para escritorio
+- [x] Efectos de sonido opcionales y controles de audio
+- [x] Responsive (dock y terminal adaptados a móvil) y `prefers-reduced-motion`
+
+**Pendientes / ideas futuras**
+
+- [ ] Fotografías reales en `assets/images/` (la web usa arte CSS mientras tanto)
+- [ ] Expedientes completos para EXP-002, EXP-003 y EXP-004 (ahora muestran "Acceso denegado")
+- [ ] Más comandos de terminal (p. ej. `LOGS` con exportación del registro)
+- [ ] Atrapar el foco dentro de los modales generados por JS (ahora se enfoca el primer control y Escape cierra)
+
+---
+
+## 9. Historial de prompts
+
+Todos los prompts se conservan íntegros. El **Prompt 3** es el prompt original que define
+PROJECT: BLACKSITE; el **Prompt 4** es la ampliación con JavaScript.
 
 | # | Proyecto | Resultado | Estado |
 |---|----------|-----------|--------|
-| 1 | Calcetines Sostenibles S.L. ("NO PULSAR") | `index.html` | Descartado |
-| 2 | El Calcetín Despierta (aventura apocalíptica) | `aventura/index.html` | Descartado |
-| 3 | **PROJECT: BLACKSITE** | [`BLACKSITE/`](BLACKSITE/) | **Versión final** |
+| 1 | Calcetines Sostenibles S.L. ("NO PULSAR") | — | Descartado |
+| 2 | El Calcetín Despierta (aventura apocalíptica) | — | Descartado |
+| 3 | **PROJECT: BLACKSITE** (prompt original) | HTML + CSS | v1.0 |
+| 4 | **BLACKSITE · ampliación JavaScript** | JS Vanilla | v2.0 |
 
 ---
 
@@ -313,24 +537,85 @@ Empieza por index.html y style.css, y después continúa con el resto de página
 Recuerda: SOLO HTML Y CSS VANILLA.
 ```
 
-### Resultado
+---
 
+## Prompt 4 — Ampliación con JavaScript Vanilla (v2.0)
+
+```text
+Quiero que amplíes mi proyecto actual PROJECT: BLACKSITE añadiendo funcionalidades avanzadas con JavaScript Vanilla (ES6+).
+IMPORTANTE: NO QUIERO QUE REHAGAS LA WEB DESDE CERO.
+Ya tengo el proyecto desarrollado en HTML5 y CSS3. Quiero que trabajes sobre los archivos existentes, respetando completamente su identidad visual, diseño, estructura, estilos y contenido.
+1. JAVASCRIPT
+Añade funcionalidades interactivas reales utilizando JavaScript Vanilla.
+Quiero incorporar:
+
+* Terminal interactiva con comandos como HELP, STATUS, EXPERIMENTS, INCIDENTS, ARCHIVES y CLEAR.
+* Pantalla de arranque del sistema (SYSTEM BOOT SEQUENCE).
+* Reloj digital en tiempo real.
+* Sistema de notificaciones y alertas dinámicas.
+* Eventos aleatorios de anomalías, fallos de contención e interferencias.
+* Buscador y filtros funcionales en la base de datos de experimentos.
+* Modales con información ampliada de los experimentos.
+* Pestañas interactivas en los expedientes.
+* Documentos clasificados desbloqueables.
+* Panel de monitorización con valores dinámicos.
+* Mapa interactivo de la instalación.
+* Simulación de alarmas y estados de emergencia.
+* Sistema de archivos secretos con buscador y categorías.
+* Sistema de descubrimientos secretos mediante códigos ocultos.
+* Transiciones cinematográficas entre páginas.
+* Preferencias y favoritos guardados mediante localStorage.
+* Cursor personalizado para escritorio.
+* Efectos de sonido opcionales y controles de audio.
+
+Todas las funcionalidades deben funcionar realmente. No quiero botones decorativos que no hagan nada.
+2. RESPETA EL DISEÑO ACTUAL
+Es fundamental que NO modifiques innecesariamente:
+
+* La composición de las páginas.
+* Los colores.
+* Las tipografías.
+* Las imágenes.
+* Los tamaños y espaciados.
+* La estructura de navegación.
+* La identidad visual BLACKSITE.
+
+Puedes mejorar detalles visuales cuando sea necesario para integrar las nuevas funcionalidades, pero sin cambiar la estética original.
+3. ORGANIZACIÓN DEL CÓDIGO
+Utiliza JavaScript Vanilla, sin React, Vue, frameworks ni librerías externas.
+Organiza el código en módulos independientes y reutilizables.
+Evita duplicaciones y mantén el código limpio.
+Comprueba que los scripts no generen errores en páginas donde determinadas funcionalidades no existan.
+4. README.MD OBLIGATORIO
+Crea o actualiza el archivo README.md en la raíz del proyecto.
+Debe incluir:
+
+* El prompt original completo que define PROJECT: BLACKSITE.
+* Una descripción del proyecto.
+* La estructura actualizada de carpetas y archivos.
+* Las nuevas funcionalidades JavaScript añadidas.
+* Una explicación de cada módulo JavaScript.
+* Instrucciones para ejecutar el proyecto.
+* Un registro de cambios.
+* Una lista de funcionalidades completadas y pendientes.
+
+MUY IMPORTANTE: conserva íntegramente el prompt original. No lo sustituyas por un resumen ni lo elimines.
+Actualiza el README.md durante el desarrollo, no solamente al finalizar.
+5. FORMA DE TRABAJAR
+Antes de modificar nada:
+
+1. Analiza todos los archivos existentes.
+2. Comprende cómo está organizado el proyecto.
+3. Identifica dónde integrar cada funcionalidad.
+4. Comprueba qué funcionalidades ya existen para no duplicarlas.
+5. Planifica las modificaciones necesarias.
+
+Después implementa las mejoras directamente sobre el proyecto existente.
+No elimines funcionalidades actuales ni sustituyas páginas completas sin una razón técnica justificada.
+6. RESULTADO FINAL
+Quiero que BLACKSITE evolucione de una web visual a una experiencia interactiva, inmersiva y dinámica.
+Mantén toda su personalidad original, pero añade la sensación de estar utilizando un auténtico sistema informático de una instalación científica ultrasecreta.
+No quiero una propuesta ni una explicación de cómo hacerlo: quiero que implementes los cambios directamente en los archivos del proyecto.
+Al terminar, comprueba que todo funciona, que no hay errores en consola y que el diseño sigue siendo responsive.
+Trabaja sobre el proyecto existente. No lo reconstruyas desde cero.
 ```
-BLACKSITE/
-├── index.html         01 · Mainframe
-├── experiments.html   02 · Database
-├── dossier.html       03 · Dossier (EXP-001)
-├── control.html       04 · Containment Control
-├── incidents.html     05 · Incident Reports
-├── archives.html      06 · Classified Archives
-├── css/style.css      Hoja de estilos única
-└── assets/images/     Fotos opcionales (ver LEEME.txt)
-```
-
-Para verla con las transiciones entre páginas activas:
-
-```bash
-cd BLACKSITE && python3 -m http.server 8047
-```
-
-y abrir <http://localhost:8047>.

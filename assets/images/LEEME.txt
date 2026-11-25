@@ -5,6 +5,12 @@ La web funciona SIN imágenes: cada hueco tiene un "arte" generado con
 gradientes CSS. Si añades una foto con el nombre exacto de esta lista,
 sustituye automáticamente al arte CSS (no hay que tocar el código).
 
+IMPORTANTE (v2.0, con JavaScript): además de copiar la foto, añada su nombre
+de archivo a la lista BS.data.photos en js/data.js, por ejemplo:
+    BS.data.photos = ['exp-001-organism.jpg', 'archive-01-corridor.jpg'];
+Así la web solo pide las fotos que existen y no aparecen errores 404 en la
+consola del navegador.
+
 Formato recomendado: JPG, horizontal, mínimo 1600 px de ancho.
 Estilo: oscuro, frío, mucho contraste. El CSS ya las pasa a casi blanco y
 negro y les devuelve el color al pasar el ratón.

@@ -9,8 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Núcleo JS: sin defer para marcar <html class="js"> antes del primer pintado -->
+  <script src="js/core.js"></script>
 </head>
-<body>
+<body data-page="control">
 
   <a class="skip-link" href="#main">Saltar al contenido</a>
 
@@ -58,7 +60,7 @@
 
   <!-- Metabarra: fecha, código de instalación, coordenadas -->
   <div class="metabar" aria-label="Datos de sesión">
-    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val">13.11.2047 — 03:17:42 UTC</span></div>
+    <div class="metabar__item"><span class="metabar__key">Date</span><span class="metabar__val" data-clock>13.11.2047 — 03:17:42 UTC</span></div>
     <div class="metabar__item"><span class="metabar__key">Facility</span><span class="metabar__val">BS7-ΔK-0419</span></div>
     <div class="metabar__item"><span class="metabar__key">Coords</span><span class="metabar__val">N 71°02'17" · E 024°51'09"</span></div>
     <div class="metabar__item"><span class="metabar__key">Operator</span><span class="metabar__val">DR. M. VOSS · 7741-K</span></div>
@@ -141,23 +143,23 @@
         <article class="panel console__power">
           <header class="panel__head">
             <h2 class="panel__title"><span class="led led--on led--pulse" aria-hidden="true"></span>Distribución de energía</h2>
-            <span class="panel__code">PWR // 412 MW</span>
+            <span class="panel__code" data-bind="power-total">PWR // 412 MW</span>
           </header>
           <div class="panel__body">
             <div class="power-bars" role="img" aria-label="Consumo energético por sector">
-              <span class="power-bars__col" style="--h:78%; --d:0s"></span>
-              <span class="power-bars__col" style="--h:56%; --d:.4s"></span>
-              <span class="power-bars__col power-bars__col--red" style="--h:94%; --d:.2s"></span>
-              <span class="power-bars__col" style="--h:42%; --d:.8s"></span>
-              <span class="power-bars__col" style="--h:67%; --d:.3s"></span>
-              <span class="power-bars__col" style="--h:31%; --d:.6s"></span>
+              <span data-bind="power-col" class="power-bars__col" style="--h:78%; --d:0s"></span>
+              <span data-bind="power-col" class="power-bars__col" style="--h:56%; --d:.4s"></span>
+              <span data-bind="power-col" class="power-bars__col power-bars__col--red" style="--h:94%; --d:.2s"></span>
+              <span data-bind="power-col" class="power-bars__col" style="--h:42%; --d:.8s"></span>
+              <span data-bind="power-col" class="power-bars__col" style="--h:67%; --d:.3s"></span>
+              <span data-bind="power-col" class="power-bars__col" style="--h:31%; --d:.6s"></span>
             </div>
             <div class="power-labels" aria-hidden="true">
               <span>S-01</span><span>S-04</span><span class="text-red">S-09</span><span>S-12</span><span>LAB</span><span>AUX</span>
             </div>
             <div class="meter" style="margin-top:1.25rem">
-              <div class="meter__row"><span>Reserva de baterías</span><strong>64%</strong></div>
-              <div class="bar bar--seg"><span class="bar__fill" style="--value:64%"></span></div>
+              <div class="meter__row"><span>Reserva de baterías</span><strong data-bind="battery">64%</strong></div>
+              <div class="bar bar--seg"><span class="bar__fill" data-bind="battery-bar" style="--value:64%"></span></div>
             </div>
           </div>
         </article>
@@ -172,14 +174,14 @@
             <div class="thermal-main">
               <div>
                 <span class="label">Cámara criogénica C-3</span>
-                <p class="thermal-main__value">−196.4<small> °C</small></p>
+                <p class="thermal-main__value" data-bind="temp" data-key="C3">−196.4<small> °C</small></p>
               </div>
               <span class="tag">Objetivo −196.0</span>
             </div>
-            <div class="thermo-row"><span>B-12</span><div class="bar"><span class="bar__fill" style="--value:22%"></span></div><span>−20.1°</span></div>
-            <div class="thermo-row"><span>S-09</span><div class="bar bar--red"><span class="bar__fill" style="--value:88%"></span></div><span class="text-red">+61.0°</span></div>
-            <div class="thermo-row"><span>A-01</span><div class="bar"><span class="bar__fill" style="--value:48%"></span></div><span>21.3°</span></div>
-            <div class="thermo-row"><span>N −7</span><div class="bar bar--live"><span class="bar__fill" style="--value:63%"></span></div><span>34.8°</span></div>
+            <div class="thermo-row"><span>B-12</span><div class="bar"><span class="bar__fill" data-bind="temp-bar" data-key="B12" style="--value:22%"></span></div><span data-bind="temp" data-key="B12" data-unit="°">−20.1°</span></div>
+            <div class="thermo-row"><span>S-09</span><div class="bar bar--red"><span class="bar__fill" data-bind="temp-bar" data-key="S09" style="--value:88%"></span></div><span class="text-red" data-bind="temp" data-key="S09" data-unit="°">+61.0°</span></div>
+            <div class="thermo-row"><span>A-01</span><div class="bar"><span class="bar__fill" data-bind="temp-bar" data-key="A01" style="--value:48%"></span></div><span data-bind="temp" data-key="A01" data-unit="°">21.3°</span></div>
+            <div class="thermo-row"><span>N −7</span><div class="bar bar--live"><span class="bar__fill" data-bind="temp-bar" data-key="N7" style="--value:63%"></span></div><span data-bind="temp" data-key="N7" data-unit="°">34.8°</span></div>
             <div class="spark" aria-hidden="true">
               <span style="--h:40%; --d:0s"></span><span style="--h:46%; --d:.1s"></span><span style="--h:38%; --d:.2s"></span>
               <span style="--h:52%; --d:.3s"></span><span style="--h:60%; --d:.4s"></span><span style="--h:57%; --d:.5s"></span>
@@ -276,19 +278,19 @@
           <div class="panel__body">
             <div class="cells-grid">
               <div class="cell-gauge">
-                <div class="gauge" style="--value:72"><span class="gauge__val">72<small>%</small></span></div>
+                <div class="gauge" data-bind="gauge" data-exp="EXP-001" style="--value:72"><span class="gauge__val">72<small>%</small></span></div>
                 <p><strong>EXP-001</strong>B-12</p>
               </div>
               <div class="cell-gauge">
-                <div class="gauge gauge--red" style="--value:41"><span class="gauge__val text-red">41<small>Brecha</small></span></div>
+                <div class="gauge gauge--red" data-bind="gauge" data-exp="EXP-002" style="--value:41"><span class="gauge__val text-red">41<small>Brecha</small></span></div>
                 <p><strong>EXP-002</strong>S-09</p>
               </div>
               <div class="cell-gauge">
-                <div class="gauge" style="--value:96"><span class="gauge__val">96<small>%</small></span></div>
+                <div class="gauge" data-bind="gauge" data-exp="EXP-003" style="--value:96"><span class="gauge__val">96<small>%</small></span></div>
                 <p><strong>EXP-003</strong>A-01</p>
               </div>
               <div class="cell-gauge">
-                <div class="gauge gauge--red" style="--value:58"><span class="gauge__val">58<small>%</small></span></div>
+                <div class="gauge gauge--red" data-bind="gauge" data-exp="EXP-004" style="--value:58"><span class="gauge__val">58<small>%</small></span></div>
                 <p><strong>EXP-004</strong>N −7</p>
               </div>
             </div>
@@ -330,22 +332,22 @@
                 <h3 class="label">Sistemas auxiliares</h3>
                 <label class="switch">
                   <span class="switch__text">Puertas de seguridad<small>Sellado del nivel −4</small></span>
-                  <input class="switch__input visually-hidden" type="checkbox" checked>
+                  <input class="switch__input visually-hidden" data-switch="doors" type="checkbox" checked>
                   <span class="switch__track" aria-hidden="true"></span>
                 </label>
                 <label class="switch">
                   <span class="switch__text">Purga de ventilación V-4<small>Elimina esporas · 90 s</small></span>
-                  <input class="switch__input visually-hidden" type="checkbox">
+                  <input class="switch__input visually-hidden" data-switch="purge" type="checkbox">
                   <span class="switch__track" aria-hidden="true"></span>
                 </label>
                 <label class="switch">
                   <span class="switch__text">Iluminación de B-12<small>Mantener encendida</small></span>
-                  <input class="switch__input visually-hidden" type="checkbox" checked>
+                  <input class="switch__input visually-hidden" data-switch="lights" type="checkbox" checked>
                   <span class="switch__track" aria-hidden="true"></span>
                 </label>
                 <label class="switch">
                   <span class="switch__text">Apagón de comunicaciones<small>Aísla la instalación</small></span>
-                  <input class="switch__input visually-hidden" type="checkbox">
+                  <input class="switch__input visually-hidden" data-switch="comms" type="checkbox">
                   <span class="switch__track" aria-hidden="true"></span>
                 </label>
               </div>
@@ -357,12 +359,12 @@
                   <div class="bar bar--striped"><span class="bar__fill" style="--value:63%"></span></div>
                 </div>
                 <div class="control-buttons">
-                  <a class="btn btn--sm" href="#ack">Reiniciar sensores</a>
-                  <a class="btn btn--sm" href="#ack">Purga térmica</a>
-                  <a class="btn btn--sm btn--primary" href="#ack">Evacuar S-10</a>
-                  <span class="btn btn--sm btn--locked" aria-disabled="true">Abrir S-09</span>
-                  <a class="btn btn--sm" href="#ack">Sellar ascensor</a>
-                  <span class="btn btn--sm btn--locked" aria-disabled="true">Liberar EXP-003</span>
+                  <a class="btn btn--sm" data-cmd="reset-sensors" href="#ack">Reiniciar sensores</a>
+                  <a class="btn btn--sm" data-cmd="thermal-purge" href="#ack">Purga térmica</a>
+                  <a class="btn btn--sm btn--primary" data-cmd="evacuate" href="#ack">Evacuar S-10</a>
+                  <span class="btn btn--sm btn--locked" data-cmd="open-s09" aria-disabled="true">Abrir S-09</span>
+                  <a class="btn btn--sm" data-cmd="seal-lift" href="#ack">Sellar ascensor</a>
+                  <span class="btn btn--sm btn--locked" data-cmd="release-003" aria-disabled="true">Liberar EXP-003</span>
                 </div>
               </div>
 
@@ -380,7 +382,7 @@
 
             </div>
           </div>
-          <footer class="panel__foot"><span>Los controles son demostrativos</span><span>Última acción: ninguna</span></footer>
+          <footer class="panel__foot"><span>Los controles son demostrativos</span><span data-bind="last-action">Última acción: ninguna</span></footer>
         </article>
 
       </div>
@@ -466,5 +468,26 @@
     </div>
   </footer>
 
+  <!-- ============ CAPA INTERACTIVA · BLACKSITE OS v2.0 ============ -->
+  <script src="js/data.js" defer></script>
+  <script src="js/prefs.js" defer></script>
+  <script src="js/audio.js" defer></script>
+  <script src="js/notify.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/secrets.js" defer></script>
+  <script src="js/clock.js" defer></script>
+  <script src="js/boot.js" defer></script>
+  <script src="js/transitions.js" defer></script>
+  <script src="js/cursor.js" defer></script>
+  <script src="js/monitor.js" defer></script>
+  <script src="js/anomalies.js" defer></script>
+  <script src="js/alarms.js" defer></script>
+  <script src="js/terminal.js" defer></script>
+  <script src="js/database.js" defer></script>
+  <script src="js/dossier.js" defer></script>
+  <script src="js/control.js" defer></script>
+  <script src="js/incidents.js" defer></script>
+  <script src="js/archives.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
